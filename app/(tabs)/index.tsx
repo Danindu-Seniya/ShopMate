@@ -13,7 +13,7 @@ export default function TabOneScreen() {
       <View style={styles.buttonWrapper}>
         <Text style={styles.buttonWrapperText}>Click Next to start your Navigation </Text>
         <TouchableOpacity style={styles.button} onPress={() => console.log('hello')}>
-          <Text style={styles.buttonText}>Get Started</Text>
+          <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
       </View>
     </View>
