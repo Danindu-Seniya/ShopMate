@@ -25,10 +25,8 @@ export default function TabOneScreen() {
           <Link href="/navigationScreen" style={styles.buttonText}>
             Next
           </Link>
-        <Text style={styles.buttonWrapperText}>Click Next to start your Navigation </Text>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('hello')}>
-          <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        
       </View>
     </View>
   );
