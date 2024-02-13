@@ -5,12 +5,12 @@ import { Image } from 'react-native';
 export default function TabThreeScreen() {
   return (
     <View style={styles.container}>
-      <Image 
-        
-        style={styles.profileImage}
+      <Image style={styles.profileImage} 
+      source={require('../../assets/images/maleAvatar.jpg')}        
         />
-      <Text style={styles.title}>User</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text style={styles.username}>Danny Fernando</Text>
+      <Text style={styles.age}>Age: 25</Text>
+      <Text style={styles.gender}>Gender: Male</Text>
     </View>
   );
 }
@@ -21,9 +21,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
+  username: {
+    fontSize: 25,
     fontWeight: 'bold',
+  },
+  age: {
+    fontSize: 20,
+  },
+  gender: {
+    fontSize: 20,
   },
   separator: {
     marginVertical: 30,
@@ -31,6 +37,8 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   profileImage: {
-
+    width: 200,
+    height: 200,
+    paddingTop: 10,
   },
 });
