@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// https://www.nativewind.dev/
+
