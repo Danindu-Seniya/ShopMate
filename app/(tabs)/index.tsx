@@ -8,7 +8,7 @@ import { Link } from "expo-router";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
+     <View style={styles.container}>
       <SimpleLineIcons name="location-pin" size={150} color="#727272" />
       <Text style={styles.title}>Navigate Easily</Text>
       <Text style={styles.sentence}>
@@ -25,10 +25,8 @@ export default function TabOneScreen() {
           <Link href="/navigationScreen" style={styles.buttonText}>
             Next
           </Link>
-        <Text style={styles.buttonWrapperText}>Click Next to start your Navigation </Text>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('hello')}>
-          <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        
       </View>
     </View>
   );

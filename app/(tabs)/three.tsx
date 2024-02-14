@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { Image } from "react-native";
 
@@ -10,14 +10,16 @@ export default function TabThreeScreen() {
         source={require("../../assets/images/maleAvatar.jpg")}
       />
 
-      <View style={styles.subContainer}>
-       
-      <Text style={styles.username}>Danny Fernando</Text>
+      <View style={styles.subContainer}> 
+      <Text style={styles.username}>Gehan Fernando</Text>
+      <Text style={styles.age}>Age: 25</Text>
+      <Text style={styles.gender}>Gender: Male</Text>
+      
+
+
+
       </View>
 
-      {/*
-      <Text style={styles.age}>Age: 25</Text>
-      <Text style={styles.gender}>Gender: Male</Text> */}
     </View>
   );
 }
@@ -30,8 +32,8 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 20,
+    paddingLeft: 20,
     borderRadius: 8,
     width: '100%',
     backgroundColor: "#AEAEAE",
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 25,
     fontWeight: "bold",
+    textAlign: "left",
   },
   age: {
     fontSize: 20,
