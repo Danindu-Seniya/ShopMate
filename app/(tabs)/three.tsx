@@ -5,9 +5,9 @@ import { Image } from "react-native";
 import ReviewCard from "@/components/ReviewCard";
 
 export default function TabThreeScreen() {
-  
+
   const [isReviews, setIsReviews] = useState<boolean>(true);
-  
+
   const img1 = require("../../assets/images/iceCream.svg")
   const img2 = require("../../assets/images/kickSport.svg")
 
@@ -34,7 +34,7 @@ export default function TabThreeScreen() {
         </View>
 
         {/* Text */}
-        <View style={{ marginTop: 70, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
+        <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
           <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", }}>Gehan Fernando</Text>
 
           <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
@@ -46,30 +46,47 @@ export default function TabThreeScreen() {
         {/* button set */}
 
         <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "90%", alignSelf: "center", }}>
-          <Pressable style={{ backgroundColor: "#fff", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
+          <Pressable onPress={()=>setIsReviews(true)} style={{ backgroundColor: "#fff", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
             <Text style={{ fontSize: 15 }}>Reviews</Text>
           </Pressable>
 
-          <Pressable style={{ backgroundColor: "#000", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
+          <Pressable onPress={()=>setIsReviews(false)} style={{ backgroundColor: "#000", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
             <Text style={{ fontSize: 15, color: "#fff" }}>Bio</Text>
           </Pressable>
         </View>
 
         {/* Reviews View */}
-        {true ?
-          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical:30, }}>
+        {isReviews ?
+          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical: 30, }}>
 
-            <ReviewCard props={{ name:"Chillz", text:"Very Tasty and Good customer Service with great offers.", date:"Today", img:img1}}/>
+            <ReviewCard props={{ name: "Chillz", text: "Very Tasty and Good customer Service with great offers.", date: "Today", img: img1 }} />
 
-            {/* <ReviewCard props={{ name:"Chillz", text:"Very Tasty and Good customer Service with great offers.", date:"Today"}}/> */}
-
-            <ReviewCard props={{ name:"KickSpot", text:"High quality shoes and they have great offers. Highly recommended.", date:"14/01/2024", img:img2}}/>
+            <ReviewCard props={{ name: "KickSpot", text: "High quality shoes and they have great offers. Highly recommended.", date: "14/01/2024", img: img2 }} />
 
 
           </ScrollView>)
           :
-          (<View>
-
+          (<View style={{backgroundColor:"rgba(251, 251, 251, 0.30)", width:"90%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40}}>
+            <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Name</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Gehan</Text>
+            </View>
+            <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Age</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 31</Text>
+            </View>
+            <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Gender</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Male</Text>
+            </View>
+            <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Health conditions</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Asthma</Text>
+            </View>
+            <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Medicine</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Theophylline</Text>
+            </View>
           </View>)
         }
 
