@@ -5,8 +5,11 @@ import { Image } from "react-native";
 import ReviewCard from "@/components/ReviewCard";
 
 export default function TabThreeScreen() {
-
+  
   const [isReviews, setIsReviews] = useState<boolean>(true);
+  
+  const img1 = require("../../assets/images/iceCream.svg")
+  const img2 = require("../../assets/images/kickSport.svg")
 
   return (
     //  Main cotainer
@@ -54,9 +57,13 @@ export default function TabThreeScreen() {
 
         {/* Reviews View */}
         {true ?
-          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 10, marginTop: 20 }}>
+          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical:30, }}>
 
-            <ReviewCard props={{ name:"Chillz"}}/>
+            <ReviewCard props={{ name:"Chillz", text:"Very Tasty and Good customer Service with great offers.", date:"Today", img:img1}}/>
+
+            {/* <ReviewCard props={{ name:"Chillz", text:"Very Tasty and Good customer Service with great offers.", date:"Today"}}/> */}
+
+            <ReviewCard props={{ name:"KickSpot", text:"High quality shoes and they have great offers. Highly recommended.", date:"14/01/2024", img:img2}}/>
 
 
           </ScrollView>)
