@@ -8,7 +8,7 @@ import { Link } from "expo-router";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
+     <View style={styles.container}>
       <SimpleLineIcons name="location-pin" size={150} color="#727272" />
       <Text style={styles.title}>Navigate Easily</Text>
       <Text style={styles.sentence}>
