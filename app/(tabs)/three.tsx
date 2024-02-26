@@ -8,8 +8,8 @@ export default function TabThreeScreen() {
 
   const [isReviews, setIsReviews] = useState<boolean>(true);
 
-  const img1 = require("../../assets/images/iceCream.svg")
-  const img2 = require("../../assets/images/kickSport.svg")
+  const img1 = require("../../assets/images/ice-cream.png")
+  const img2 = require("../../assets/images/Kickspot.jpeg")
 
   return (
     //  Main cotainer
@@ -29,7 +29,7 @@ export default function TabThreeScreen() {
           />
           <Image
             style={{ width: 45, height: 45 }}
-            source={require("../../assets/images/bellIcon.svg")}
+            source={require("../../assets/images/emergency-bell.png")}
           />
         </View>
 
