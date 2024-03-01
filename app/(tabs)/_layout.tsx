@@ -52,7 +52,8 @@ export default function TabLayout() {
         name="two"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerShown:false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color}  />,
         }}
       />
       <Tabs.Screen
@@ -75,6 +76,7 @@ export default function TabLayout() {
             </Link>
           ),
         }}
+        
       />
     </Tabs>
   );
