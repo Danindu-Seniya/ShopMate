@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 export default function SignIn() {
   return (
@@ -31,8 +32,7 @@ export default function SignIn() {
               color="black"
               top={10}
               left={3}
-              onPress={() => {
-                console.log("BackToStart");
+              onPress={() => {router.push ("/home")
               }}
             />
           </TouchableOpacity>
@@ -209,7 +209,7 @@ export default function SignIn() {
           marginHorizontal: 40,
           borderRadius: 10,
         }}
-        onPress={() => console.log("Login")}
+        onPress={() => router.push("/LogIn")}
       >
         <Text
           style={{

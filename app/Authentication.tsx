@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 export default function Authenticate() {
   return (
@@ -31,7 +32,7 @@ export default function Authenticate() {
               top={10}
               left={3}
               onPress={() => {
-                console.log("BackToStart");
+                router.push("/LogIn");
               }}
             />
           </TouchableOpacity>
@@ -97,7 +98,7 @@ export default function Authenticate() {
         marginTop:360,
         marginHorizontal:40,
         borderRadius:10,
-        }} onPress={() => console.log('OTP')}>
+        }} onPress={() => router.push("/(tabs)/two")}>
           <Text style={{
             color:'white',
             fontSize:18,

@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React from "react";
 import {
   View,
@@ -54,7 +55,7 @@ export default function CreateAccount() {
             marginTop: -25,
             marginHorizontal:10,
           }}
-          source={require("../assets/home.png")}
+          source={require("../assets/images/home.png")}
         />
       
     
@@ -79,7 +80,8 @@ export default function CreateAccount() {
         marginTop:90,
         marginHorizontal:40,
         borderRadius:10,
-        }} onPress={() => console.log('Create account')}>
+        }} 
+        onPress={() => router.push("/SignIn")}>
           <Text style={{
             color:'white',
             fontSize:18,
@@ -98,7 +100,7 @@ export default function CreateAccount() {
         marginTop:-15,
         marginHorizontal:40,
         borderRadius:10,
-        }} onPress={() => console.log('Login')}>
+        }} onPress={() => router.push ("/LogIn")}>
           <Text style={{
             fontSize:18,
             color:'#1164C4',
