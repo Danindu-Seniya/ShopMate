@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useColorScheme } from '@/components/useColorScheme';
 import { initializeApp } from "firebase/app";
 import {initializeAuth,getReactNativePersistence} from "firebase/auth";
-import {ReactNativeAsyncStorage} from "@react-native-async-storage/async-storage";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQ4zoPZNe71Axbf0bbzJRDxTzxA2qywnw",
@@ -21,7 +21,7 @@ const firebaseConfig = {
 
 const app =initializeApp(firebaseConfig);
 initializeAuth(app,{
-  presistence:getReactNativePersistence(ReactNativeAsyncStorage)
+  persistence:getReactNativePersistence(ReactNativeAsyncStorage)
 })
 export {
   // Catch any errors thrown by the Layout component.
