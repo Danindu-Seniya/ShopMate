@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, FlatList, View } from 'react-native';
-import ShopCard from '@/components/ShopCard'; // Adjust the import path as per your project structure
+import ShopCard from '@/components/ShopCard'; 
 import { Ionicons } from '@expo/vector-icons';
 
 const SearchableShopList = () => {
   const [searchText, setSearchText] = useState('');
   
-  // Sample shop data
+  // Shop data
   const shops = [
     { id: 1, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
     { id: 2, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
@@ -16,7 +16,7 @@ const SearchableShopList = () => {
     { id: 6, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
     { id: 7, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
     { id: 8, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
-    // Add more shop data as needed
+    
   ];
 
   // Filter shops based on search text
@@ -29,7 +29,7 @@ const SearchableShopList = () => {
         <View className='flex-row alignItems-center height-40 borderColor-gray-300 border-2 rounded-lg px-1 py-2 width-50% alignSelf-center' >
     <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray"/>
       <TextInput
-        className='flex-1 height-100%  fontSize-16 ' 
+        className='flex-1 height-100% width-70% fontSize-16 ' 
         placeholder="Search shops..."
         onChangeText={text => setSearchText(text)}
         value={searchText}
