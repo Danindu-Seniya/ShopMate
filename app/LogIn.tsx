@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,8 +10,22 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LogIn() {
+
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(getAuth(), email, password)
+      .then((user) => {
+        if (user) router.replace("/(tabs)");
+      })
+      .catch((err) => {
+        alert(err?.message);
+      });
+  };
   return (
     <ScrollView style={styles.container}>
       <View
@@ -90,10 +104,10 @@ export default function LogIn() {
               borderRadius: 10,
               height: 40,
             }}
-          >
-            {" "}
-           xxx@gmail.com
-          </TextInput>
+            placeholder="Email"
+            keyboardType="email-address"
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
         <View
           style={{
@@ -109,10 +123,10 @@ export default function LogIn() {
               borderRadius: 10,
               height: 40,
             }}
-          >
-            {" "}
-            *********
-          </TextInput>
+            placeholder="Password"
+            secureTextEntry
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
        
       </View>
@@ -125,7 +139,7 @@ export default function LogIn() {
         marginTop:300,
         marginHorizontal:40,
         borderRadius:10,
-        }} onPress={() => router.push("/Authentication")}>
+        }} onPress={() => handleLogin()}>
           <Text style={{
             color:'white',
             fontSize:18,

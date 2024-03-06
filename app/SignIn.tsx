@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,8 +11,23 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignIn() {
+
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleRegister = () => {
+    createUserWithEmailAndPassword(getAuth(), email, password)
+      .then((user) => {
+        if (user) router.replace("/(tabs)");
+      })
+      .catch((err) => {
+        alert(err?.message);
+      });
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View
@@ -147,10 +162,10 @@ export default function SignIn() {
               borderRadius: 10,
               height: 40,
             }}
-          >
-            {" "}
-            Ex: xxx@gmai.com
-          </TextInput>
+            placeholder="Email"
+            keyboardType="email-address"
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
         <View
           style={{
@@ -166,10 +181,10 @@ export default function SignIn() {
               borderRadius: 10,
               height: 40,
             }}
-          >
-            {" "}
-            Your password must be 8 charactors or more
-          </TextInput>
+            placeholder="Your password must be 8 charactors or more"
+            secureTextEntry
+            onChangeText={(text) => setPassword(text)}
+          />
         </View>
       </View>
 
@@ -183,7 +198,7 @@ export default function SignIn() {
           marginHorizontal: 40,
           borderRadius: 10,
         }}
-        onPress={() => console.log("sign up")}
+        onPress={handleRegister}
       >
         <Text
           style={{
