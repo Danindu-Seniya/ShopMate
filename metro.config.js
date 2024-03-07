@@ -1,4 +1,4 @@
-// const{getDefaultconfig} = require('@expo/metro-config');
+// const{getDefaultconfig} = require('expo/metro-config');
 
 // /** @type {import('metro-config').MetroConfig} */
 // const config = getDefaultconfig(__dirname);
