@@ -14,18 +14,18 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LogIn() {
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
 
-  const handleLogin = () => {
-    signInWithEmailAndPassword(getAuth(), email, password)
-      .then((user) => {
-        if (user) router.replace("/(tabs)");
-      })
-      .catch((err) => {
-        alert(err?.message);
-      });
-  };
+  // const handleLogin = () => {
+  //   signInWithEmailAndPassword(getAuth(), email, password)
+  //     .then((user) => {
+  //       if (user) router.replace("/(tabs)");
+  //     })
+  //     .catch((err) => {
+  //       alert(err?.message);
+  //     });
+  // };
   return (
     <ScrollView style={styles.container}>
       <View
@@ -106,7 +106,7 @@ export default function LogIn() {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            onChangeText={(text) => setEmail(text)}
+            // onChangeText={(text) => setEmail(text)}
           />
         </View>
         <View
@@ -125,7 +125,7 @@ export default function LogIn() {
             }}
             placeholder="Password"
             secureTextEntry
-            onChangeText={(text) => setPassword(text)}
+            // onChangeText={(text) => setPassword(text)}
           />
         </View>
        
@@ -139,7 +139,9 @@ export default function LogIn() {
         marginTop:300,
         marginHorizontal:40,
         borderRadius:10,
-        }} onPress={() => handleLogin()}>
+        }}
+        //  onPress={() => handleLogin() }
+         >
           <Text style={{
             color:'white',
             fontSize:18,

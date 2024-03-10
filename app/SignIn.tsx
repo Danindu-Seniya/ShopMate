@@ -15,18 +15,18 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignIn() {
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
 
-  const handleRegister = () => {
-    createUserWithEmailAndPassword(getAuth(), email, password)
-      .then((user) => {
-        if (user) router.replace("/(tabs)");
-      })
-      .catch((err) => {
-        alert(err?.message);
-      });
-  };
+  // const handleRegister = () => {
+  //   createUserWithEmailAndPassword(getAuth(), email, password)
+  //     .then((user) => {
+  //       if (user) router.replace("/(tabs)");
+  //     })
+  //     .catch((err) => {
+  //       alert(err?.message);
+  //     });
+  // };
 
   return (
     <ScrollView style={styles.container}>
@@ -164,7 +164,7 @@ export default function SignIn() {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            onChangeText={(text) => setEmail(text)}
+            // onChangeText={(text) => setEmail(text)}
           />
         </View>
         <View
@@ -183,7 +183,7 @@ export default function SignIn() {
             }}
             placeholder="Your password must be 8 charactors or more"
             secureTextEntry
-            onChangeText={(text) => setPassword(text)}
+            // onChangeText={(text) => setPassword(text)}
           />
         </View>
       </View>
@@ -198,7 +198,7 @@ export default function SignIn() {
           marginHorizontal: 40,
           borderRadius: 10,
         }}
-        onPress={handleRegister}
+        // onPress={handleRegister}
       >
         <Text
           style={{
