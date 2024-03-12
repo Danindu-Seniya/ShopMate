@@ -1,71 +1,59 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, FlatList, View } from 'react-native';
+import ShopCard from '@/components/ShopCard'; 
+import { Ionicons } from '@expo/vector-icons';
 
-export default function ARNavigationScreen() {
-    const navigation = useNavigation();
-    return (
-        <View style={styles.container}>
-            <SimpleLineIcons name="location-pin" size={150} color="#727272" />
-            <Text style={styles.title}>Navigate Easily</Text>
-            <Text style={styles.sentence}>Find your destination easy and fast with Augmented Reality</Text>
-
-            <View style={styles.buttonWrapper}>
-                <Text style={styles.buttonWrapperText}>Click Next to start your Navigation </Text>
+const SearchableShopList = () => {
+  const [searchText, setSearchText] = useState('');
+  
+  // Shop data
+  const shops = [
+    { id: 1, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
+    { id: 2, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
+    { id: 3, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
+    { id: 4, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
+    { id: 5, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
+    { id: 6, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
+    { id: 7, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
+    { id: 8, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
     
-            </View>
-        </View>
-    );
-}
+  ];
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 10,
-    },
-    title: {
-        fontSize: 35,
-        fontWeight: 'bold',
-        paddingTop: 10,
-    },
-    sentence:{
-        fontSize: 14,
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
-    },
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 100,
-        borderRadius: 8,
-        elevation: 3,
-        backgroundColor: 'black',
-    },
-    buttonText: {
-        fontSize: 16,
-        lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
-    },
-    buttonWrapper: {
-        paddingTop: 20,
-    },
-    buttonWrapperText: {
-        fontSize: 16,
-        lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'black',
-    },
+  // Filter shops based on search text
+  const filteredShops = shops.filter(shop =>
+    shop.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
-})
+  return (
+    <View className='flex-1 paddingTop-20'>
+        <View className='flex-row alignItems-center height-40 borderColor-gray-300 border-2 rounded-lg px-1 py-2 width-50% alignSelf-center' >
+    <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray"/>
+      <TextInput
+        className='flex-1 height-100% width-70% fontSize-16 ' 
+        placeholder="Search shops..."
+        onChangeText={text => setSearchText(text)}
+        value={searchText}
+      />
+      </View>
+      <FlatList
+        data={filteredShops}
+        renderItem={({ item }) => (
+          <ShopCard
+            key={item.id}
+            name={item.name}
+            logo={item.logo}
+            rating={item.rating}
+            category={item.category}
+          />
+        )}
+        keyExtractor={item => item.id.toString()}
+      />
+    </View>
+    
+  );
+};
+
+
+export default SearchableShopList;
+
+
