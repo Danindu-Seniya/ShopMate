@@ -14,7 +14,7 @@ export default function ReviewCard({props}:{props:{
     return(
         <View style={{ backgroundColor: 'transparent', width: '90%', height: 'auto', alignSelf: "center", rowGap:5, marginVertical:5 }}>
         <Text style={{fontSize:20}} >{date}</Text>
-        <View style={{backgroundColor: '#000', borderRadius: 25, width: '100%', height: 'auto', paddingVertical:25, paddingHorizontal: 30, alignSelf: "center", justifyContent: "center", alignItems:"center", flexDirection: "row", columnGap: 15,}}>
+        <View style={{backgroundColor: '#252525', borderRadius: 25, width: '100%', height: 'auto', paddingVertical:25, paddingHorizontal: 30, alignSelf: "center", justifyContent: "center", alignItems:"center", flexDirection: "row", columnGap: 15,}}>
             {/* image */}
         <Image
           style={{ minWidth: 80, minHeight: 80, height: 90, aspectRatio: 1, borderRadius: 10, flex: 1.2 }}

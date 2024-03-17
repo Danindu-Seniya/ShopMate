@@ -13,9 +13,9 @@ export default function TabThreeScreen() {
 
   return (
     //  Main cotainer
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end", }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end", backgroundColor:"#282828" }}>
       {/* Sub container */}
-      <View style={{ flex: 0.75, paddingTop: 20, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#AEAEAE" }}>
+      <View style={{ flex: 0.75, paddingTop: 20, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#1E1E1E" }}>
         <Image
           style={{ width: 200, height: 200, marginStart: 100, borderRadius: 100, marginTop: -100, zIndex: 20 }}
           source={require("../../assets/images/maleAvatar.jpg")}   
@@ -47,10 +47,10 @@ export default function TabThreeScreen() {
 
         <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "90%", alignSelf: "center", }}>
           <Pressable onPress={()=>setIsReviews(true)} style={{ backgroundColor: "#fff", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 15 }}>Reviews</Text>
+            <Text style={{ fontSize: 15, color: "#000" }}>Reviews</Text>
           </Pressable>
 
-          <Pressable onPress={()=>setIsReviews(false)} style={{ backgroundColor: "#000", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
+          <Pressable onPress={()=>setIsReviews(false)} style={{ backgroundColor: "#333333", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
             <Text style={{ fontSize: 15, color: "#fff" }}>Bio</Text>
           </Pressable>
         </View>
