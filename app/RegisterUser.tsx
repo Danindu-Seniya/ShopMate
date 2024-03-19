@@ -11,8 +11,31 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { FIREBASE_AUTH } from '../Firebaseconfig';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
-export default function SignIn() {
+
+export default function RegisterUser() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const[loading, setLoading] = useState(false);
+  const auth = FIREBASE_AUTH;
+
+  const signUp = async () => {
+    setLoading(true);
+    try{
+        const response = await createUserWithEmailAndPassword(auth, email, password);
+        console.log(response);
+    }catch(error: any){
+        console.log(error);
+        alert('SignIn failed: ' + error.message);
+    }finally{
+        setLoading(false);
+    }
+    }
+
+
   return (
     <ScrollView style={styles.container}>
       <View
@@ -32,7 +55,7 @@ export default function SignIn() {
               color="black"
               top={10}
               left={3}
-              onPress={() => {router.push ("/home")
+              onPress={() => {router.push ("/Start")
               }}
             />
           </TouchableOpacity>
@@ -56,119 +79,66 @@ export default function SignIn() {
 
       <View>
         <Text
-          style={{
-            fontSize: 32,
-            marginTop: 20,
-            marginLeft: 20,
-          }}
-        >
+          style={{fontSize: 32,marginTop: 20,marginLeft: 20,}}>
           Welcome!
         </Text>
         <Text
-          style={{
-            fontSize: 16,
-            marginLeft: 20,
-            marginTop: -6,
-          }}
-        >
+          style={{fontSize: 16,marginLeft: 20,marginTop: -6,}}>
           Create your account
         </Text>
       </View>
 
       <View>
         <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 20,
-          }}
+        style={styles.inputcontainer}
         >
           <Text>Name:</Text>
           <TextInput
-            style={{
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 10,
-              height: 40,
-            }}
-          >
-            {" "}
-            Ex:mark
+            style={styles.textInput}
+            placeholder=" Your Name"
+            >
           </TextInput>
         </View>
         <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 10,
-          }}
+       style={styles.inputcontainer}
         >
-          <Text>Birthday:</Text>
+          <Text>Age:</Text>
           <TextInput
-            style={{
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 10,
-              height: 40,
-            }}
-          >
-            {" "}
-            dd/mm/yyyy
+            style={styles.textInput}
+            placeholder=" Your Age"
+            >
           </TextInput>
         </View>
         <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 10,
-          }}
+       style={styles.inputcontainer}
         >
           <Text>Mobile number:</Text>
           <TextInput
-            style={{
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 10,
-              height: 40,
-            }}
-          >
-            {" "}
-            +94 xxx xxx
+            style={styles.textInput}
+            placeholder=" +94XXXXXXXXX"
+            >
           </TextInput>
         </View>
         <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 10,
-          }}
+         style={styles.inputcontainer}
         >
           <Text>Email:</Text>
           <TextInput
-            style={{
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 10,
-              height: 40,
-            }}
-            placeholder="Email"
+            style={styles.textInput}
+            placeholder=" Email"
             keyboardType="email-address"
-            // onChangeText={(text) => setEmail(text)}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
         <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 10,
-          }}
+          style={styles.inputcontainer}
         >
           <Text>Create password:</Text>
           <TextInput
-            style={{
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 10,
-              height: 40,
-            }}
-            placeholder="Your password must be 8 charactors or more"
+            style={styles.textInput}
+            placeholder=" Your password must be 8 charactors or more"
             secureTextEntry
-            // onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => setPassword(text)}
           />
         </View>
       </View>
@@ -183,7 +153,7 @@ export default function SignIn() {
           marginHorizontal: 40,
           borderRadius: 10,
         }}
-        // onPress={handleRegister}
+        onPress={signUp}
       >
         <Text
           style={{
@@ -229,4 +199,15 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
     flex: 1,
   },
+  textInput:{
+    borderWidth: 2,
+    borderColor: "black",
+    borderRadius: 10,
+    height: 40,
+
+  },
+  inputcontainer:{
+    marginHorizontal: 20,
+    marginTop: 10,
+  }
 });

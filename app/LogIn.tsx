@@ -9,21 +9,29 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
-// import { firebase } from "@react-native-firebase/auth";
-// import React, { useState } from "react";
+import { FIREBASE_AUTH } from "@/Firebaseconfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 const LogIn = () => {
 
-//   const [email, setEmail] = useState('')
-//   const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const[loading, setLoading] = useState(false);
+  const auth = FIREBASE_AUTH;
 
-//   const loginUser = async(email: string,password: string) =>{
-//     try{
-//       await firebase.auth().signInWithEmailAndPassword(email,password);
-//     } catch(error:any){
-//       alert(error.message)
-//     }
-//   }
+  const signIn = async () => {
+    setLoading(true);
+    try{
+        const response = await signInWithEmailAndPassword(auth, email, password);
+        console.log(response);
+    }catch(error: any){
+        console.log(error);
+        alert('SignIn failed: ' + error.message);
+    }finally{
+        setLoading(false);
+    }
+    }
   return (
     <ScrollView style={styles.container}>
       <View
@@ -44,7 +52,7 @@ const LogIn = () => {
               top={10}
               left={3}
               onPress={() => {
-                router.push("/home");
+                router.push("/Start");
               }}
             />
           </TouchableOpacity>
@@ -104,7 +112,7 @@ const LogIn = () => {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            // onChangeText={(email) => setEmail(email)}
+            onChangeText={(email) => setEmail(email)}
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -125,7 +133,7 @@ const LogIn = () => {
             }}
             placeholder="Password"
             secureTextEntry={true}
-            // onChangeText={(password) => setPassword(password)}
+            onChangeText={(password) => setPassword(password)}
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -142,7 +150,7 @@ const LogIn = () => {
         marginHorizontal:40,
         borderRadius:10,
         }}
-        //  onPress={() => loginUser(email,password)}
+         onPress={signIn}
          >
           <Text style={{
             color:'white',
