@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,22 +9,21 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { firebase } from "@react-native-firebase/auth";
+// import React, { useState } from "react";
 
-export default function LogIn() {
+const LogIn = () => {
 
-  // const [email, setEmail] = useState<string>("");
-  // const [password, setPassword] = useState<string>("");
+//   const [email, setEmail] = useState('')
+//   const [password, setPassword] = useState('')
 
-  // const handleLogin = () => {
-  //   signInWithEmailAndPassword(getAuth(), email, password)
-  //     .then((user) => {
-  //       if (user) router.replace("/(tabs)");
-  //     })
-  //     .catch((err) => {
-  //       alert(err?.message);
-  //     });
-  // };
+//   const loginUser = async(email: string,password: string) =>{
+//     try{
+//       await firebase.auth().signInWithEmailAndPassword(email,password);
+//     } catch(error:any){
+//       alert(error.message)
+//     }
+//   }
   return (
     <ScrollView style={styles.container}>
       <View
@@ -106,7 +104,9 @@ export default function LogIn() {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            // onChangeText={(text) => setEmail(text)}
+            // onChangeText={(email) => setEmail(email)}
+            autoCapitalize="none"
+            autoCorrect={false}
           />
         </View>
         <View
@@ -124,8 +124,10 @@ export default function LogIn() {
               height: 40,
             }}
             placeholder="Password"
-            secureTextEntry
-            // onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            // onChangeText={(password) => setPassword(password)}
+            autoCapitalize="none"
+            autoCorrect={false}
           />
         </View>
        
@@ -140,13 +142,13 @@ export default function LogIn() {
         marginHorizontal:40,
         borderRadius:10,
         }}
-        //  onPress={() => handleLogin() }
+        //  onPress={() => loginUser(email,password)}
          >
           <Text style={{
             color:'white',
             fontSize:18,
             fontWeight:'400'
-          }}>Sign Up</Text>
+          }}>LOG IN</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={{
@@ -164,6 +166,8 @@ export default function LogIn() {
     </ScrollView>
   );
 }
+
+export default LogIn;
 
 const styles = StyleSheet.create({
   container: {

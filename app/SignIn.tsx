@@ -11,23 +11,8 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignIn() {
-
-  // const [email, setEmail] = useState<string>("");
-  // const [password, setPassword] = useState<string>("");
-
-  // const handleRegister = () => {
-  //   createUserWithEmailAndPassword(getAuth(), email, password)
-  //     .then((user) => {
-  //       if (user) router.replace("/(tabs)");
-  //     })
-  //     .catch((err) => {
-  //       alert(err?.message);
-  //     });
-  // };
-
   return (
     <ScrollView style={styles.container}>
       <View
