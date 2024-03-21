@@ -8,30 +8,43 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Stack, router } from "expo-router";
 import { FIREBASE_AUTH } from "@/Firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { Tabs } from "expo-router";
+import TabTwoScreen from "./(tabs)/two";
 const LogIn = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const[loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
+  // const navigation = useNavigation();
+
+
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //     if (user){
+  //       navigation.navigate({ screen: "Tabs" });
+  //     }
+  //   })
+  // });
 
   const signIn = async () => {
     setLoading(true);
-    try{
-        const response = await signInWithEmailAndPassword(auth, email, password);
-        console.log(response);
-    }catch(error: any){
-        console.log(error);
-        alert('SignIn failed: ' + error.message);
-    }finally{
-        setLoading(false);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in");
+      router.navigate("Tabs");
+    } catch (error: any) {
+      console.log(error);
+      alert("SignIn failed: " + error.message);
+    } finally {
+      setLoading(false);
     }
-    }
+  };
   return (
     <ScrollView style={styles.container}>
       <View
@@ -91,7 +104,7 @@ const LogIn = () => {
             marginTop: -6,
           }}
         >
-        Sign in to your account
+          Sign in to your account
         </Text>
       </View>
 
@@ -112,7 +125,7 @@ const LogIn = () => {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            onChangeText={(email) => setEmail(email)}
+            onChangeText={(text) => setEmail(text)}
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -133,47 +146,58 @@ const LogIn = () => {
             }}
             placeholder="Password"
             secureTextEntry={true}
-            onChangeText={(password) => setPassword(password)}
+            onChangeText={(text) => setPassword(text)}
             autoCapitalize="none"
             autoCorrect={false}
           />
         </View>
-       
       </View>
 
-      <TouchableOpacity style={{
-        backgroundColor:'black',
-        height:45,
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:300,
-        marginHorizontal:40,
-        borderRadius:10,
+      <TouchableOpacity
+        style={{
+          backgroundColor: "black",
+          height: 45,
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 300,
+          marginHorizontal: 40,
+          borderRadius: 10,
         }}
-         onPress={signIn}
-         >
-          <Text style={{
-            color:'white',
-            fontSize:18,
-            fontWeight:'400'
-          }}>LOG IN</Text>
+        onPress={signIn}
+      >
+        <Text
+          style={{
+            color: "white",
+            fontSize: 18,
+            fontWeight: "400",
+          }}
+        >
+          LOG IN
+        </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{
-        height:45,
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:-1,
-        marginHorizontal:40,
-        borderRadius:10,
-        }} onPress={() => console.log('Foget Password')}>
-          <Text style={{
-            fontSize:16,
-          }}>{'Foget Password'}</Text>
+      <TouchableOpacity
+        style={{
+          height: 45,
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: -1,
+          marginHorizontal: 40,
+          borderRadius: 10,
+        }}
+        onPress={() => console.log("Foget Password")}
+      >
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          {"Foget Password"}
+        </Text>
       </TouchableOpacity>
     </ScrollView>
   );
-}
+};
 
 export default LogIn;
 
@@ -183,3 +207,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+function createNativeStackNavigator() {
+  throw new Error("Function not implemented.");
+}

@@ -69,7 +69,7 @@ export default function Start() {
       >
         <Text
           style={{fontSize: 18,color: "#1164C4",fontWeight: "bold",}}>
-          {"Log in"}
+          Log
         </Text>
       </TouchableOpacity>
     </SafeAreaView>

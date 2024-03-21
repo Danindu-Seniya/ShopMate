@@ -1,77 +1,56 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
+  NavigationContainer,
+  TabActions,
+  TabRouter,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
-import { useColorScheme } from "@/components/useColorScheme";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useEffect, useState } from "react";
+import { User, onAuthStateChanged } from "firebase/auth"; // Check if this is the correct import from firebase
+import { FIREBASE_AUTH } from "../Firebaseconfig"; // Assuming FIREBASE_APP is initialized elsewhere
+import AsyncStorage from "@react-native-async-storage/async-storage"; // Corrected im
+// Make sure Tabs is imported from the correct location
+import { Tabs, Stack } from "expo-router"; // Replace 'path-to-Tabs' with the actual path
 import TabLayout from "./(tabs)/_layout";
+import LogIn from "./LogIn";
+import RegisterUser from "./RegisterUser";
 import Start from "./Start";
-import { User } from "firebase/auth";
-import { FIREBASE_AUTH } from "@/Firebaseconfig";
+import { View } from "@/components/Themed";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
+const InsideStack = createNativeStackNavigator();
 
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
-};
+//  function InsideLayout() {
+//   return(
+//     <InsideStack.Navigator>
+//       <InsideStack.Screen name="Tabs" component={Tabs} />
+//     </InsideStack.Navigator>
+//   )
+// }
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
-  });
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+export default function App() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+    const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
       setUser(user);
     });
+
+    // Unsubscribe from the auth state listener when component unmounts
+    return () => unsubscribe();
   }, []);
+
   return (
-    <Stack>
+    <View>
       {user ? (
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Tabs>
+            <Tabs.Screen name="TabLayout" />
+        </Tabs>
       ) : (
-        <Stack.Screen name="Start" options={{ headerShown: false }} />
+        <Stack>
+          <Stack.Screen name="Start" />
+          <Stack.Screen name="RegisterUser" />
+          <Stack.Screen name="LogIn" />
+        </Stack>
       )}
-      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-    </Stack>
+    </View>
   );
-}
-function onAuthStateChanged(_FIREBASE_AUTH: any, arg1: (user: any) => void) {
-  throw new Error("Function not implemented.");
 }
