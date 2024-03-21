@@ -13,9 +13,10 @@ export default function TabThreeScreen() {
 
   return (
     //  Main cotainer
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end", }}>
+    
+    <ScrollView style={{ flex: 1}} contentContainerStyle={{ alignItems: "center", justifyContent: "flex-end",  }}>
       {/* Sub container */}
-      <View style={{ flex: 0.75, paddingTop: 20, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#AEAEAE" }}>
+      <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#AEAEAE" }}>
         <Image
           style={{ width: 200, height: 200, marginStart: 100, borderRadius: 100, marginTop: -100, zIndex: 20 }}
           source={require("../../assets/images/maleAvatar.jpg")}   
@@ -45,13 +46,19 @@ export default function TabThreeScreen() {
 
         {/* button set */}
 
-        <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "90%", alignSelf: "center", }}>
-          <Pressable onPress={()=>setIsReviews(true)} style={{ backgroundColor: "#fff", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 15 }}>Reviews</Text>
+        <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "90%", alignSelf: "center" }}>
+          <Pressable
+            onPress={()=>setIsReviews(true)}
+            style={[styles.button, isReviews ? styles.selectedButton : null]}
+          >
+            <Text style={[styles.buttonText, isReviews ? styles.selectedButtonText : null]}>Reviews</Text>
           </Pressable>
 
-          <Pressable onPress={()=>setIsReviews(false)} style={{ backgroundColor: "#000", width: '35%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, flex: 0.75, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 15, color: "#fff" }}>Bio</Text>
+          <Pressable
+            onPress={()=>setIsReviews(false)}
+            style={[styles.button, !isReviews ? styles.selectedButton : null]}
+          >
+            <Text style={[styles.buttonText, !isReviews ? styles.selectedButtonText : null]}>Bio</Text>
           </Pressable>
         </View>
 
@@ -87,6 +94,14 @@ export default function TabThreeScreen() {
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Medicine</Text>
               <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Theophylline</Text>
             </View>
+
+            <Pressable
+    style={styles.editButton}
+    onPress={() => handleEditBio()}
+  >
+    <Text style={styles.editButtonText}>Edit Bio</Text>
+  </Pressable>
+
           </View>)
         }
 
@@ -95,7 +110,7 @@ export default function TabThreeScreen() {
 
       </View>
 
-    </View>
+    </ScrollView>
   );
 }
 
@@ -112,5 +127,40 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: "80%",
+  },
+  button: {
+    backgroundColor: "#fff",
+    width: '35%',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 20,
+    flex: 0.75,
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 5, // Added margin for spacing between buttons
+  },
+  selectedButton: {
+    backgroundColor: "#000",
+  },
+  buttonText: {
+    fontSize: 15,
+  },
+  selectedButtonText: {
+    color: "#fff",
+  },
+  editButton: {
+    backgroundColor: "#252525", 
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    width: 125,
+    paddingHorizontal: 10,
+    paddingVertical: 12,
+    borderRadius: 50,
+    marginTop: 10, 
+  },
+  editButtonText: {
+    fontSize: 18,
+    color: "#fff", 
   },
 });

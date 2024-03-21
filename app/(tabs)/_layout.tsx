@@ -62,7 +62,7 @@ export default function TabLayout() {
           title: 'User Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/userSettings" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <Ionicons
