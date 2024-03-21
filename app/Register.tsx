@@ -27,6 +27,7 @@ export default function RegisterUser() {
     try{
         const response = await createUserWithEmailAndPassword(auth, email, password);
         console.log(response);
+        router.push("/Login");
     }catch(error: any){
         console.log(error);
         alert('SignIn failed: ' + error.message);
@@ -179,7 +180,7 @@ export default function RegisterUser() {
           marginHorizontal: 40,
           borderRadius: 10,
         }}
-        onPress={() => router.push("/LogIn")}
+        onPress={() => router.push("/Login")}
       >
         <Text
           style={{

@@ -65,11 +65,12 @@ export default function Start() {
 
       <TouchableOpacity
         style={styles.loginbtn}
-        onPress={() => router.push("/Login")}
-      >
+        onPress={()=>router.push("/Login")}
+        
+        >
         <Text
           style={{fontSize: 18,color: "#1164C4",fontWeight: "bold",}}>
-          Log
+          Log In
         </Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -8,14 +8,10 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Stack, router } from "expo-router";
+import { router } from "expo-router";
 import { FIREBASE_AUTH } from "../firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
-import { Tabs } from "expo-router";
-import TabTwoScreen from "./(tabs)/two";
+import { useState } from "react";
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +24,7 @@ const LogIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in");
-      router.navigate("Tabs");
+      router.push('/(tabs)')
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
@@ -198,6 +194,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-function createNativeStackNavigator() {
-  throw new Error("Function not implemented.");
-}
