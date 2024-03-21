@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, TouchableOpacity, Pressable, ScrollView } from "react-native";
+import { StyleSheet, TouchableOpacity, Pressable, ScrollView, Modal, TextInput } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { Image } from "react-native";
 import ReviewCard from "@/components/ReviewCard";
@@ -7,10 +7,19 @@ import ReviewCard from "@/components/ReviewCard";
 export default function TabThreeScreen() {
 
   const [isReviews, setIsReviews] = useState<boolean>(true);
+  const [isEditBioModalVisible, setIsEditBioModalVisible] = useState<boolean>(false);
 
   const img1 = require("../../assets/images/ice-cream.png")
   const img2 = require("../../assets/images/Kickspot.jpeg")
 
+  const handleEditBio = () => {
+    setIsEditBioModalVisible(true);
+  };
+
+  const handleSaveBio = () => {
+    // Implement logic to save edited bio
+    setIsEditBioModalVisible(false);
+  };
   return (
     //  Main cotainer
     
@@ -105,7 +114,29 @@ export default function TabThreeScreen() {
           </View>)
         }
 
-
+     {/* Edit Bio Modal */}
+     <Modal
+          visible={isEditBioModalVisible}
+          transparent={true}
+          animationType="slide"
+          onRequestClose={() => setIsEditBioModalVisible(false)}
+        >
+          <View style={styles.editBioModalContainer}>
+            <ScrollView>
+              <View style={styles.editBioModalContent}>
+                <Text style={styles.modalTitle}>Edit Bio</Text>
+                <TextInput style={styles.inputField} placeholder="Name" />
+                <TextInput style={styles.inputField} placeholder="Age" />
+                <TextInput style={styles.inputField} placeholder="Gender" />
+                <TextInput style={styles.inputField} placeholder="Health Conditions" />
+                <TextInput style={styles.inputField} placeholder="Medicine" />
+                <TouchableOpacity style={styles.saveButton} onPress={handleSaveBio}>
+                  <Text style={styles.saveButtonText}>Save</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </View>
+        </Modal>
 
 
       </View>
@@ -162,5 +193,39 @@ const styles = StyleSheet.create({
   editButtonText: {
     fontSize: 18,
     color: "#fff", 
+  },
+  editBioModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  editBioModalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 20,
+    width: '80%',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  inputField: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  saveButton: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  saveButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
