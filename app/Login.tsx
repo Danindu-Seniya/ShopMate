@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Stack, router } from "expo-router";
-import { FIREBASE_AUTH } from "./";
+import { FIREBASE_AUTH } from "../firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
