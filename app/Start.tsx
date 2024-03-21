@@ -51,7 +51,7 @@ export default function Start() {
 
       <TouchableOpacity
         style={styles.createbtn}
-        onPress={() => router.push("/RegisterUser")}
+        onPress={() => router.push("/Register")}
       >
         <Text
           style={{color: "white",fontSize: 18,fontWeight: "bold",}}>
@@ -65,7 +65,7 @@ export default function Start() {
 
       <TouchableOpacity
         style={styles.loginbtn}
-        onPress={() => router.push("/LogIn")}
+        onPress={() => router.push("/Login")}
       >
         <Text
           style={{fontSize: 18,color: "#1164C4",fontWeight: "bold",}}>
