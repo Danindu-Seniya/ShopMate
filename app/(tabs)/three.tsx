@@ -96,11 +96,11 @@ export default function TabThreeScreen() {
               <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Male</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
-              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Health conditions</Text>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Special health conditions</Text>
               <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Asthma</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
-              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Medicine</Text>
+              <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Emergency medicine</Text>
               <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Theophylline</Text>
             </View>
 
@@ -112,31 +112,50 @@ export default function TabThreeScreen() {
   </Pressable>
 
           </View>)
-        }
+
+}
 
      {/* Edit Bio Modal */}
-     <Modal
-          visible={isEditBioModalVisible}
-          transparent={true}
-          animationType="slide"
-          onRequestClose={() => setIsEditBioModalVisible(false)}
-        >
-          <View style={styles.editBioModalContainer}>
-            <ScrollView>
-              <View style={styles.editBioModalContent}>
-                <Text style={styles.modalTitle}>Edit Bio</Text>
-                <TextInput style={styles.inputField} placeholder="Name" />
-                <TextInput style={styles.inputField} placeholder="Age" />
-                <TextInput style={styles.inputField} placeholder="Gender" />
-                <TextInput style={styles.inputField} placeholder="Health Conditions" />
-                <TextInput style={styles.inputField} placeholder="Medicine" />
-                <TouchableOpacity style={styles.saveButton} onPress={handleSaveBio}>
-                  <Text style={styles.saveButtonText}>Save</Text>
-                </TouchableOpacity>
-              </View>
-            </ScrollView>
+          <Modal
+          style={styles.editBioModal}
+        visible={isEditBioModalVisible}
+        transparent={false}
+        animationType="slide"
+        onRequestClose={() => setIsEditBioModalVisible(false)}
+      >
+        <View style={styles.editBioModalContainer}>
+          <View style={styles.editBioModalContent}>
+            <Text style={styles.modalTitle}>Edit Bio</Text>
+            
+            {/* Profile Picture */}
+            <View style={styles.profilePictureContainer}>
+              <Image
+                style={styles.profilePicture}
+                source={require("../../assets/images/maleAvatar.jpg")}   
+              />
+              <TouchableOpacity style={styles.editProfileButton}>
+                <Image
+                  style={styles.editProfileIcon}
+                  source={require("../../assets/images/plus-icon.png")} // Plus icon image
+                />
+                <Text style={styles.editProfileText}>Edit Profile Photo</Text>
+              </TouchableOpacity>
+            </View>
+            
+            {/* Text Inputs */}
+            <TextInput style={styles.inputField} placeholder="Name" />
+            <TextInput style={styles.inputField} placeholder="Age" />
+            <TextInput style={styles.inputField} placeholder="Gender" />
+            <TextInput style={styles.inputField} placeholder="Health Conditions" />
+            <TextInput style={styles.inputField} placeholder="Medicine" />
+
+            {/* Save Button */}
+            <TouchableOpacity style={styles.saveButton} onPress={handleSaveBio}>
+              <Text style={styles.saveButtonText}>Save</Text>
+            </TouchableOpacity>
           </View>
-        </Modal>
+        </View>
+      </Modal>
 
 
       </View>
@@ -194,10 +213,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#fff", 
   },
+
+  editBioModal: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    paddingBottom: 20,
+  },
   editBioModalContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    paddingBottom: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   editBioModalContent: {
@@ -212,20 +238,53 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   inputField: {
+    width: '90%',
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
+    alignSelf: 'center',
   },
   saveButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#252525',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
+    alignSelf: 'center',
+    width: 125,
   },
   saveButtonText: {
     color: '#fff',
+    fontWeight: 'bold',
+  },
+  profilePictureContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  profilePicture: {
+    width: 120,
+    height: 120,
+    borderRadius: 50,
+  },
+  editProfileButton: {
+    marginLeft: -38,
+    marginTop: 75,
+    bottom: 0,
+    right: 0,
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  editProfileIcon: {
+    width: 30,
+    height: 30,
+    marginRight: 5,
+  
+  },
+  editProfileText: {
+    color: '#252525',
     fontWeight: 'bold',
   },
 });
