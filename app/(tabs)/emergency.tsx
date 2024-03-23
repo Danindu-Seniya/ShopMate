@@ -10,21 +10,21 @@ const emergency = () => {
 
         <TouchableOpacity
     style={styles.editButton}
-    onPress={() => handleEditBio()}
+    onPress={() => handle()}
   >
     <Text style={styles.editButtonText}>Edit Bio</Text>
   </TouchableOpacity>
 
   <TouchableOpacity
     style={styles.editButton}
-    onPress={() => handleEditBio()}
+    onPress={() => handle()}
   >
     <Text style={styles.editButtonText}>Edit Bio</Text>
   </TouchableOpacity>
 
   <TouchableOpacity
     style={styles.editButton}
-    onPress={() => handleEditBio()}
+    onPress={() => handle()}
   >
     <Text style={styles.editButtonText}>Edit Bio</Text>
   </TouchableOpacity>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 10,
         right: 10,
-        
+        color: 'black',
         borderRadius: 5,
         padding: 10,
     },
