@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Stack, router } from "expo-router";
+import { router } from "expo-router";
 import { FIREBASE_AUTH } from "@/Firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ const LogIn = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        router.replace("./(tabs)/index");
+        router.replace("./(tabs)");
       }
     });
     return () => unsubscribe();
@@ -32,7 +32,7 @@ const LogIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in");
-      router.navigate("Tabs");
+      router.replace("./(tabs)");
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
@@ -202,6 +202,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-function createNativeStackNavigator() {
-  throw new Error("Function not implemented.");
-}

@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+
+
 export default function Start() {
   return (
     <SafeAreaView style={styles.container}>
@@ -51,7 +53,7 @@ export default function Start() {
 
       <TouchableOpacity
         style={styles.createbtn}
-        onPress={() => router.push("/RegisterUser")}
+        onPress={()=>router.replace("./auth/RegisterUser")}
       >
         <Text
           style={{color: "white",fontSize: 18,fontWeight: "bold",}}>
@@ -65,11 +67,11 @@ export default function Start() {
 
       <TouchableOpacity
         style={styles.loginbtn}
-        onPress={() => router.push("/LogIn")}
+        onPress={() => router.replace("./auth/LogIn")}
       >
         <Text
           style={{fontSize: 18,color: "#1164C4",fontWeight: "bold",}}>
-          Log
+          Log In
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -119,3 +121,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   }
 });
+

@@ -1,30 +1,7 @@
-import {
-  NavigationContainer,
-  TabActions,
-  TabRouter,
-} from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { User, onAuthStateChanged } from "firebase/auth"; // Check if this is the correct import from firebase
-import { FIREBASE_AUTH } from "../Firebaseconfig"; // Assuming FIREBASE_APP is initialized elsewhere
-import AsyncStorage from "@react-native-async-storage/async-storage"; // Corrected im
-// Make sure Tabs is imported from the correct location
-import { Tabs, Stack } from "expo-router"; // Replace 'path-to-Tabs' with the actual path
-import TabLayout from "./(tabs)/_layout";
-import LogIn from "./LogIn";
-import RegisterUser from "./RegisterUser";
-import Start from "./Start";
-import { View } from "@/components/Themed";
-
-const InsideStack = createNativeStackNavigator();
-
-//  function InsideLayout() {
-//   return(
-//     <InsideStack.Navigator>
-//       <InsideStack.Screen name="Tabs" component={Tabs} />
-//     </InsideStack.Navigator>
-//   )
-// }
+import { User, onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "../Firebaseconfig";
+import { Stack, router } from "expo-router";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -32,6 +9,9 @@ export default function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
       setUser(user);
+      if (!user){
+        router.replace("/Start");
+      }
     });
 
     // Unsubscribe from the auth state listener when component unmounts
@@ -39,18 +19,13 @@ export default function App() {
   }, []);
 
   return (
-    <View>
-      {user ? (
-        <Tabs>
-            <Tabs.Screen name="TabLayout" />
-        </Tabs>
-      ) : (
-        <Stack>
-          <Stack.Screen name="Start" />
-          <Stack.Screen name="RegisterUser" />
-          <Stack.Screen name="LogIn" />
-        </Stack>
-      )}
-    </View>
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      <Stack.Screen name="Start" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/LogIn" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/RegisterUser" options={{ headerShown: false }} />
+      
+    </Stack>
   );
 }

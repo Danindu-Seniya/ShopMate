@@ -10,18 +10,19 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import {useRouter } from "expo-router";
-import { FIREBASE_AUTH } from "../../Firebaseconfig";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-
+import { useRouter } from "expo-router";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../../Firebaseconfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function RegisterUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fName, setFname] = useState("");
+  const [lName, setLname] = useState("");
+  const [mobNum, setMobNum] = useState("");
+  const [age, setAge] = useState("");
   const auth = FIREBASE_AUTH;
 
   const router = useRouter();
@@ -34,12 +35,25 @@ export default function RegisterUser() {
         email,
         password
       );
-      console.log(response);
+      console.log("User Registered");
+      router.replace("/(tabs)");
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
     } finally {
       setLoading(false);
+    }
+    try {
+      const docRef = await addDoc(collection(FIREBASE_DB, "users"), {
+        fName:fName,
+        lName:lName,
+        mobNum:mobNum,
+        age:age,
+        email:email,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
   };
 
@@ -97,38 +111,45 @@ export default function RegisterUser() {
       <View>
         <View style={styles.inputcontainer}>
           <Text>First Name:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=" "
-          ></TextInput>
+          <TextInput style={styles.textInput} 
+            placeholder=" " 
+            onChangeText={(text) => setFname(text)}
+            autoCapitalize="none"
+            autoCorrect={false}></TextInput>
         </View>
 
         <View style={styles.inputcontainer}>
           <Text>Last Name:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=" "
-          ></TextInput>
+          <TextInput style={styles.textInput}
+          placeholder=" " 
+          onChangeText={(text) => setLname(text)}
+          autoCapitalize="none"
+          autoCorrect={false}></TextInput>
         </View>
+
         <View style={styles.inputcontainer}>
           <Text>Age:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=" "
-          ></TextInput>
+          <TextInput style={styles.textInput}
+          placeholder=" " 
+          onChangeText={(text) => setAge(text)}
+          autoCorrect={false}></TextInput>
         </View>
+
         <View style={styles.inputcontainer}>
           <Text>Mobile number:</Text>
           <TextInput
             style={styles.textInput}
             placeholder=" +94XXXXXXXXX"
+            onChangeText={(text) => setMobNum(text)}
+            autoCorrect={false}
           ></TextInput>
         </View>
+
         <View style={styles.inputcontainer}>
           <Text>Email:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder=" Email"
+            placeholder=" "
             keyboardType="email-address"
             onChangeText={(text) => setEmail(text)}
           />
