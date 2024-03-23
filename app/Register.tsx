@@ -11,14 +11,20 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { FIREBASE_AUTH } from '../firebaseconfig';
+import { FIREBASE_AUTH, FIREBASE_DB } from '../firebaseconfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { Firestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 
 export default function RegisterUser() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fName,setfName] = useState('');
+  const [lName,setlName] = useState('');
+  const [age,setage] = useState('');
+  const [MobileNum,setMobileNum] = useState('');
   const[loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
 
@@ -31,9 +37,21 @@ export default function RegisterUser() {
     }catch(error: any){
         console.log(error);
         alert('SignIn failed: ' + error.message);
-    }finally{
-        setLoading(false);
     }
+    try {
+      const docRef = await addDoc(collection(FIREBASE_DB, "users"), {
+       fName,
+       lName,
+       MobileNum,
+       email,
+       age,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+    finally{
+        setLoading(false);
     }
 
 
@@ -93,10 +111,23 @@ export default function RegisterUser() {
         <View
         style={styles.inputcontainer}
         >
-          <Text>Name:</Text>
+          <Text>Frist Name:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder=" Your Name"
+            placeholder=" Your First Name"
+            onChangeText={(fName) => setfName(fName)}
+            >
+          </TextInput>
+        </View>
+
+        <View
+        style={styles.inputcontainer}
+        >
+          <Text>Last Name:</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder=" Your Last Name"
+            onChangeText={(lName) => setlName(lName)}
             >
           </TextInput>
         </View>
@@ -107,6 +138,7 @@ export default function RegisterUser() {
           <TextInput
             style={styles.textInput}
             placeholder=" Your Age"
+            onChangeText={(age) => setage(age)}
             >
           </TextInput>
         </View>
@@ -117,6 +149,7 @@ export default function RegisterUser() {
           <TextInput
             style={styles.textInput}
             placeholder=" +94XXXXXXXXX"
+            onChangeText={(MobileNum) => setMobileNum(MobileNum)}
             >
           </TextInput>
         </View>
@@ -128,7 +161,7 @@ export default function RegisterUser() {
             style={styles.textInput}
             placeholder=" Email"
             keyboardType="email-address"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(email) => setEmail(email)}
           />
         </View>
         <View
@@ -139,7 +172,7 @@ export default function RegisterUser() {
             style={styles.textInput}
             placeholder=" Your password must be 8 charactors or more"
             secureTextEntry
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(password) => setPassword(password)}
           />
         </View>
       </View>
@@ -212,3 +245,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   }
 });
+
+}

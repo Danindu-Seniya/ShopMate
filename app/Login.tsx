@@ -1,37 +1,31 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
 import { FIREBASE_AUTH } from "../firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-const LogIn = () => {
+import { useNavigation } from "@react-navigation/native";
+import {  Link, router } from 'expo-router';
+
+
+ const LogIn = async () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
-
+  const navigation = useNavigation();
 
   const signIn = async () => {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in");
-      router.push('/(tabs)')
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
     } finally {
       setLoading(false);
     }
-  };
+  };;
   return (
     <ScrollView style={styles.container}>
       <View
@@ -112,7 +106,7 @@ const LogIn = () => {
             }}
             placeholder="Email"
             keyboardType="email-address"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(email) => setEmail(email)}
             autoCapitalize="none"
             autoCorrect={false}
           />
@@ -133,7 +127,7 @@ const LogIn = () => {
             }}
             placeholder="Password"
             secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(password) => setPassword(password)}
             autoCapitalize="none"
             autoCorrect={false}
           />
