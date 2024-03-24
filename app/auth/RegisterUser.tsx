@@ -13,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { FIREBASE_AUTH, FIREBASE_DB } from "../../Firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 
 export default function RegisterUser() {
   const [email, setEmail] = useState("");
@@ -23,6 +23,7 @@ export default function RegisterUser() {
   const [lName, setLname] = useState("");
   const [mobNum, setMobNum] = useState("");
   const [age, setAge] = useState("");
+  // const [gender,setGender] = useState("");
   const auth = FIREBASE_AUTH;
   const router = useRouter();
   
@@ -36,15 +37,18 @@ export default function RegisterUser() {
         password
       );
       console.log("User Registered");
-      const db = getDatabase();
-      const userRef = ref(db, 'users/' + response.user.uid); // Assuming each user has a unique ID
-      await set(userRef, {
-        fName: fName,
-        lName: lName,
-        mobNum: mobNum,
-        age: age,
-        email: email
-      });
+      try {
+        const docRef = await addDoc(collection(FIREBASE_DB, "users"), {
+          first: fName,
+          last: lName,
+          email: email,
+          age: age,
+          mobNum: mobNum,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
       router.replace("/(tabs)");
     } catch (error: any) {
       console.log(error);
@@ -239,3 +243,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+
