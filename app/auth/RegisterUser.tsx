@@ -13,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { FIREBASE_AUTH, FIREBASE_DB } from "../../Firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { getDatabase, ref, set } from "firebase/database";
 
 export default function RegisterUser() {
   const [email, setEmail] = useState("");
@@ -24,8 +24,8 @@ export default function RegisterUser() {
   const [mobNum, setMobNum] = useState("");
   const [age, setAge] = useState("");
   const auth = FIREBASE_AUTH;
-
   const router = useRouter();
+  
 
   const signUp = async () => {
     setLoading(true);
@@ -36,24 +36,25 @@ export default function RegisterUser() {
         password
       );
       console.log("User Registered");
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + response.user.uid); // Assuming each user has a unique ID
+      await set(userRef, {
+        fName: fName,
+        lName: lName,
+        mobNum: mobNum,
+        age: age,
+        email: email
+      });
       router.replace("/(tabs)");
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
-    } finally {
-      setLoading(false);
+    } 
+    try{
+
     }
-    try {
-      const docRef = await addDoc(collection(FIREBASE_DB, "users"), {
-        fName:fName,
-        lName:lName,
-        mobNum:mobNum,
-        age:age,
-        email:email,
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    finally {
+      setLoading(false);
     }
   };
 
@@ -111,28 +112,34 @@ export default function RegisterUser() {
       <View>
         <View style={styles.inputcontainer}>
           <Text>First Name:</Text>
-          <TextInput style={styles.textInput} 
-            placeholder=" " 
+          <TextInput
+            style={styles.textInput}
+            placeholder=" "
             onChangeText={(text) => setFname(text)}
             autoCapitalize="none"
-            autoCorrect={false}></TextInput>
+            autoCorrect={false}
+          ></TextInput>
         </View>
 
         <View style={styles.inputcontainer}>
           <Text>Last Name:</Text>
-          <TextInput style={styles.textInput}
-          placeholder=" " 
-          onChangeText={(text) => setLname(text)}
-          autoCapitalize="none"
-          autoCorrect={false}></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder=" "
+            onChangeText={(text) => setLname(text)}
+            autoCapitalize="none"
+            autoCorrect={false}
+          ></TextInput>
         </View>
 
         <View style={styles.inputcontainer}>
           <Text>Age:</Text>
-          <TextInput style={styles.textInput}
-          placeholder=" " 
-          onChangeText={(text) => setAge(text)}
-          autoCorrect={false}></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder=" "
+            onChangeText={(text) => setAge(text)}
+            autoCorrect={false}
+          ></TextInput>
         </View>
 
         <View style={styles.inputcontainer}>
