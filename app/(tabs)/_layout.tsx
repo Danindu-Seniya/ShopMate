@@ -3,6 +3,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons';
 import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -31,7 +33,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'AR Navigation',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="location" size={24} color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -53,7 +55,10 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           headerShown:false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color}  />,
+
+ 
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+
         }}
       />
       <Tabs.Screen
@@ -62,7 +67,7 @@ export default function TabLayout() {
           title: 'User Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/userSettings" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <Ionicons
@@ -77,6 +82,14 @@ export default function TabLayout() {
           ),
         }}
         
+      />
+      <Tabs.Screen
+        name="emergency"
+        options={{
+          title: 'Emergency Services',
+          headerShown:false,
+          tabBarIcon: ({ color }) => <MaterialIcons name="emergency" size={24} color={color} />,
+        }}
       />
     </Tabs>
   );

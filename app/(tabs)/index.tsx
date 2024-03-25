@@ -4,7 +4,7 @@ import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 export default function TabOneScreen() {
   return (
@@ -21,10 +21,10 @@ export default function TabOneScreen() {
           Click Next to start your Navigation{" "}
         </Text>
 
-        <TouchableOpacity style={styles.button}>
-          <Link href="/navigationScreen" style={styles.buttonText}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/navigationScreen")}>
+          <Text style={styles.buttonText}>
             Next
-          </Link>
+          </Text>
         </TouchableOpacity>
         
       </View>

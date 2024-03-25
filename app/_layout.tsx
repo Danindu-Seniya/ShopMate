@@ -19,6 +19,7 @@ export default function App() {
   }, []);
 
   return (
+
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="modal" options={{ presentation: "modal" }} />
@@ -27,5 +28,6 @@ export default function App() {
       <Stack.Screen name="auth/RegisterUser" options={{ headerShown: false }} />
       
     </Stack>
+
   );
 }
