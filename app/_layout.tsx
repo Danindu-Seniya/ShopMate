@@ -1,57 +1,33 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "../Firebaseconfig";
+import { Stack, router } from "expo-router";
 
-import { useColorScheme } from '@/components/useColorScheme';
-
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+export default function App() {
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      setUser(user);
+      if (!user){
+        router.replace("/Start");
+      }
+    });
 
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+    // Unsubscribe from the auth state listener when component unmounts
+    return () => unsubscribe();
+  }, []);
 
   return (
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="userSettings" options={{presentation: 'modal'}} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
+
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      <Stack.Screen name="Start" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/LogIn" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/RegisterUser" options={{ headerShown: false }} />
+      
+    </Stack>
+
   );
 }

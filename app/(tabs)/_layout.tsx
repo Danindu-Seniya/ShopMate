@@ -55,7 +55,10 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           headerShown:false,
+
+ 
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+
         }}
       />
       <Tabs.Screen
@@ -78,6 +81,7 @@ export default function TabLayout() {
             </Link>
           ),
         }}
+        
       />
       <Tabs.Screen
         name="emergency"
