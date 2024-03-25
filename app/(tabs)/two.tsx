@@ -310,9 +310,6 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-});
-
-  },
   promotions: {
     justifyContent: "center",
     marginTop: 20,
