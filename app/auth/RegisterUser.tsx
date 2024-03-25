@@ -49,7 +49,7 @@ export default function RegisterUser() {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-      router.replace("/(tabs)");
+      router.replace("./(tabs)");
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
