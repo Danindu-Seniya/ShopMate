@@ -50,15 +50,17 @@ export default function TabTwoScreen() {
             Promotions
           </Text>
 
-          <Promotioncomp />
+          {/* add promotion component */}
+          <Promotioncomp /> 
 
           <Text
             style={{fontSize: 17,fontWeight: "bold",marginTop: 30,marginLeft: 30,}}>
             Event calendar
           </Text>
 
+          {/* add event calender component */}
           <Eventcaendercomp />
-          
+
         </View>
       </ScrollView>
     </SafeAreaView>
