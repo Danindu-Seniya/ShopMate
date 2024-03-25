@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, Image, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Router, router } from 'expo-router';
 
 
 const Emergency = () => {
@@ -24,25 +25,23 @@ const Emergency = () => {
             <Text style={styles.heading}>Emergency Services</Text>
 
             {/* Button for Request Medical Assistance */}
-            <TouchableOpacity style={styles.button} onPress={handleRequestMedicalAssistance}>
-              {/* Icon for Request Medical Assistance */}
-              {/* You can replace 'icon_medical' with the actual path to your medical assistance icon */}
+            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+              
+              
               <Image source={require('../../assets/images/medicalIcon.webp')} style={styles.icon} />
               <Text style={styles.buttonText}>Request Medical Assistance</Text>
             </TouchableOpacity>
 
             {/* Button for Request Security Assistance */}
-            <TouchableOpacity style={styles.button} onPress={handleRequestSecurityAssistance}>
-              {/* Icon for Request Security Assistance */}
-              {/* You can replace 'icon_security' with the actual path to your security assistance icon */}
+            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqSecurity")}>
+              
               <Image source={require('../../assets/images/securityIcon.png')} style={styles.icon} />
               <Text style={styles.buttonText}>Request Security Assistance</Text>
             </TouchableOpacity>
 
             {/* Button for Public Emergency Services */}
-            <TouchableOpacity style={styles.button} onPress={handlePublicEmergencyServices}>
-              {/* Icon for Public Emergency Services */}
-              {/* You can replace 'icon_public' with the actual path to your public emergency services icon */}
+            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/publicEmergency")}>
+              
               <Image source={require('../../assets/images/publicEM.png')} style={styles.icon} />
               <Text style={styles.buttonText}>Public Emergency Services</Text>
             </TouchableOpacity>
