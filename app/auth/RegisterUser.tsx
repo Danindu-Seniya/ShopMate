@@ -13,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { FIREBASE_AUTH, FIREBASE_DB } from "../../Firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { collection, addDoc, getFirestore,} from "firebase/firestore";
 
 export default function RegisterUser() {
   const [email, setEmail] = useState("");

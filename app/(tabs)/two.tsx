@@ -1,27 +1,50 @@
-
 import { ScrollView, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore";
+import { FIREBASE_DB } from "@/Firebaseconfig";
 
 export default function TabTwoScreen() {
+  const [fName, setFName] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const Snapshot = await getDocs(collection(FIREBASE_DB, "users"));
+        Snapshot.forEach((doc) => {
+          setFName(doc.data().first); // Set fName from Firestore data
+        });
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <View style={{
-            flexDirection: 'row',
-            marginTop: 10,
-          }}>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 10,
+            }}
+          >
             <View>
-              <Image style={{
-                height: 50,
-                width: 50,
-                marginLeft: 30,
-              }}
-                source={require("@/assets/images/Profile_photo.png")} />
+              <Image
+                style={{
+                  height: 50,
+                  width: 50,
+                  marginLeft: 30,
+                }}
+                source={require("@/assets/images/Profile_photo.png")}
+              />
             </View>
             <View>
               <Text
@@ -32,11 +55,12 @@ export default function TabTwoScreen() {
                   marginTop: 5,
                 }}
               >
-                Hello {'Jane'}!
+                Hello {fName} !
               </Text>
             </View>
-            <TouchableOpacity onPress={() => console.log("Emergency open")} >
-              <Image style={{ marginLeft: 100 }}
+            <TouchableOpacity onPress={() => console.log("Emergency open")}>
+              <Image
+                style={{ marginLeft: 100 }}
                 source={require("@/assets/images/emergency.png")}
               />
             </TouchableOpacity>
@@ -290,7 +314,6 @@ export default function TabTwoScreen() {
         </View>
       </ScrollView>
     </SafeAreaView>
-
   );
 }
 
@@ -298,17 +321,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
   promotions: {
     justifyContent: "center",
@@ -320,5 +343,3 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
-
