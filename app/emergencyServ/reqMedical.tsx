@@ -1,12 +1,29 @@
 import React from "react";
+import { useState } from "react";
 import { StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import {MaterialIcons} from "@expo/vector-icons";
+import { Camera, CameraType } from "expo-camera";
 
 export default function reqMedical() {
+  const [type, setType] = useState(CameraType.back);
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+  const [hasPermission, setHasPermission] = useState(null);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  function toggleCameraType() {
+    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+  }
+
   return (
     <View style={styles.container}>
      <MaterialIcons name="emergency-share" size={150} color="#727272" />
@@ -22,7 +39,7 @@ export default function reqMedical() {
        </Text>
 
        <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
           <MaterialIcons name="photo-camera" size={24} color="white" />
         </TouchableOpacity>
         </View>
