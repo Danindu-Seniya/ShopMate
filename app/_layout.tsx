@@ -24,8 +24,9 @@ export default function App() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="modal" options={{ presentation: "modal" }} />
       <Stack.Screen name="Start" options={{ headerShown: false }} />
-      <Stack.Screen name="auth/LogIn" options={{ headerShown: false }} />
       <Stack.Screen name="auth/RegisterUser" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/LogIn" options={{ headerShown: false }} />
+      
       
     </Stack>
 
