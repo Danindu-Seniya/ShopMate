@@ -81,6 +81,7 @@ export default function RegisterUser() {
               color="black"
               top={10}
               left={3}
+              marginLeft= {20}
               onPress={() => {
                 router.push("/Start");
               }}
@@ -97,6 +98,7 @@ export default function RegisterUser() {
             style={{
               fontSize: 24,
               alignItems: "flex-start",
+              fontWeight: 'bold'
             }}
           >
             Sign Up
@@ -105,7 +107,7 @@ export default function RegisterUser() {
       </View>
 
       <View>
-        <Text style={{ fontSize: 32, marginTop: 20, marginLeft: 20 }}>
+        <Text style={{ fontSize: 32, marginTop: 20, marginLeft: 20, fontWeight: 'bold'}}>
           Welcome!
         </Text>
         <Text style={{ fontSize: 16, marginLeft: 20, marginTop: -6 }}>
@@ -218,6 +220,7 @@ export default function RegisterUser() {
           style={{
             fontSize: 18,
             color: "#1164C4",
+            fontWeight: 'bold'
           }}
         >
           {"Log in"}
@@ -236,7 +239,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     borderRadius: 10,
-    height: 40,
+    height: 42,
+    marginLeft: 5,
+    marginRight: 5
   },
   inputcontainer: {
     marginHorizontal: 20,

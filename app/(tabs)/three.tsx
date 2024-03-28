@@ -27,7 +27,7 @@ export default function TabThreeScreen() {
       {/* Sub container */}
       <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#AEAEAE" }}>
         <Image
-          style={{ width: 200, height: 200, marginStart: 100, borderRadius: 100, marginTop: -100, zIndex: 20 }}
+          style={{ width: 200, height: 200, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 20 }}
           source={require("../../assets/images/maleAvatar.jpg")}   
         />
 
@@ -38,7 +38,7 @@ export default function TabThreeScreen() {
             source={require("../../assets/images/storeIcon.svg")}
           />
           <Image
-            style={{ width: 45, height: 45 }}
+            style={{ width: 45, height: 45, bottom: -140 }}
             source={require("../../assets/images/emergency-bell.png")}
           />
         </View>
