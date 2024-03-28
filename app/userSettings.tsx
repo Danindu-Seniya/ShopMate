@@ -12,13 +12,13 @@ export default function UserSettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/pwAndSecurity")}>
         <Text style={styles.buttonText}>Password and Security</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/help")}>
         <Text style={styles.buttonText}>Help</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/about")}>
         <Text style={styles.buttonText}>About</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.logoutButton} onPress={()=>router.push("/emergencyServ/reqMedical")}>
