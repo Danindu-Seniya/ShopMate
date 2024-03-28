@@ -8,7 +8,7 @@ const SearchableShopList = () => {
   
   // Shop data
   const shops = [
-    { id: 1, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
+    { id: 1, name: 'Keells', logo: require("../assets/images/Keells.jpg"), rating: '4.5', category: 'Food City' },
     { id: 2, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
     { id: 3, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
     { id: 4, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
@@ -27,7 +27,7 @@ const SearchableShopList = () => {
   return (
     <View className='flex-1 paddingTop-20'>
         <View className='flex-row alignItems-center height-40 borderColor-gray-300 border-2 rounded-lg px-1 py-2 width-50% alignSelf-center' >
-    <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray"/>
+    <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray" marginLeft= {20}/>
       <TextInput
         className='flex-1 height-100% width-70% fontSize-16 ' 
         placeholder="Search shops..."

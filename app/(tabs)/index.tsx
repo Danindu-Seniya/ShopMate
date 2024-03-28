@@ -12,7 +12,8 @@ export default function TabOneScreen() {
       <SimpleLineIcons name="location-pin" size={150} color="#727272" />
       <Text style={styles.title}>Navigate Easily</Text>
       <Text style={styles.sentence}>
-        Find your destination easy and fast with Augmented Reality
+        Find your destination easy and fast{"\n"}
+        with Augmented Reality
       </Text>
 
       <View style={styles.buttonWrapper}>
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   sentence: {
-    fontSize: 14,
+    fontSize: 16,
+    textAlign: 'center'
   },
   separator: {
     marginVertical: 30,

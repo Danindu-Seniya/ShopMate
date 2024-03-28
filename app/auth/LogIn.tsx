@@ -164,7 +164,7 @@ const LogIn = () => {
           marginTop: 300,
           marginHorizontal: 40,
           borderRadius: 10,
-          bottom: -40
+          
         }}
         onPress={signIn}
       >
@@ -195,7 +195,7 @@ const LogIn = () => {
         <Text
           style={{
             fontSize: 16,
-            bottom: 40
+            
           }}
         >
           {"Foget Password"}
