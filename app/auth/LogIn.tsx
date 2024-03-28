@@ -121,7 +121,8 @@ const LogIn = () => {
               borderRadius: 10,
               height: 40,
               marginLeft: 5,
-              marginRight: 5
+              marginRight: 5,
+              paddingHorizontal: 10,
             }}
             placeholder="Email"
             keyboardType="email-address"
@@ -144,7 +145,8 @@ const LogIn = () => {
               borderRadius: 10,
               height: 40,
               marginLeft: 5,
-              marginRight: 5
+              marginRight: 5,
+              paddingHorizontal: 10,
             }}
             placeholder="Password"
             secureTextEntry={true}

@@ -241,7 +241,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 42,
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
+    paddingHorizontal:10,
   },
   inputcontainer: {
     marginHorizontal: 20,
