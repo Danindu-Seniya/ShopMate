@@ -6,7 +6,7 @@ const ShopMateText: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.text}>ShopMate</Text>
       <Text style={styles.description}>
-      Shopping mall assistance system is for shopping
+      With this app for shopping
       malls makes shopping easier and more fun! 
       With our app, you can use your phone to find your 
       way around the mall using cool AR technology. 

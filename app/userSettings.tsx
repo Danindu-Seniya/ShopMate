@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { router } from "expo-router";
+import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function UserSettingsScreen() {
  
@@ -12,18 +15,41 @@ export default function UserSettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/pwAndSecurity")}>
-        <Text style={styles.buttonText}>Password and Security</Text>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={()=>router.push("../Settings/pwAndSecurity")}>
+        <View style={styles.buttonContent}>
+          <MaterialIcons name="security" size={24} color="black" style={styles.icon} />
+          <Text style={styles.buttonText}>Password and Security</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/help")}>
-        <Text style={styles.buttonText}>Help</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/about")}>
-        <Text style={styles.buttonText}>About</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.logoutButton} onPress={()=>router.push("../Settings/logOut")}>
-        <Text style={styles.logoutButtonText}>Log Out</Text>
-      </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={()=>router.push("../Settings/help")}>
+        <View style={styles.buttonContent}>
+          <Entypo name="help-with-circle" size={24} color="black" style={styles.icon} />
+          <Text style={styles.buttonText}>Help</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={()=>router.push("../Settings/about")}>
+        <View style={styles.buttonContent}>
+        <AntDesign name="exclamationcircle" size={24} color="black" style={styles.icon} />
+          <Text style={styles.buttonText}>About</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.logoutContainer}>
+        <TouchableOpacity onPress={()=>router.push("../Settings/logOut")}>
+        <View style={styles.buttonContent}>
+        <AntDesign name="logout" size={24} color="black" style={styles.icon} />
+          <Text style={styles.logoutButtonText}>Log Out</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -35,25 +61,41 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#fff",
   },
-  button: {
-    backgroundColor: "#007bff",
-    padding: 20,
-    borderRadius: 10,
+  buttonContainer: {
     marginBottom: 20,
+    borderWidth: 3,
+    borderColor: "#5B95D7",
+    borderRadius: 10,
+    width: "80%", 
+  },
+  logoutContainer: {
+    marginBottom: 20,
+    borderWidth: 3,
+    borderColor: "red",
+    borderRadius: 10,
+    width: "80%", 
   },
   buttonText: {
-    color: "#fff",
+    color: "black",
     fontSize: 18,
     fontWeight: "bold",
-  },
-  logoutButton: {
-    backgroundColor: "#dc3545",
+    textAlign: "left",
     padding: 20,
-    borderRadius: 10,
+    marginLeft: 10
   },
   logoutButtonText: {
-    color: "#fff",
+    color: "black",
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: "left",
+    padding: 20,
+    marginLeft: 10
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    marginLeft: 10,
   },
 });
