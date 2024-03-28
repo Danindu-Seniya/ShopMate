@@ -21,7 +21,7 @@ export default function UserSettingsScreen() {
       <TouchableOpacity style={styles.button} onPress={()=>router.push("../Settings/about")}>
         <Text style={styles.buttonText}>About</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.logoutButton} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+      <TouchableOpacity style={styles.logoutButton} onPress={()=>router.push("../Settings/logOut")}>
         <Text style={styles.logoutButtonText}>Log Out</Text>
       </TouchableOpacity>
     </View>
