@@ -1,12 +1,86 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-const about = () => {
+const ShopMateText: React.FC = () => {
   return (
-    <View>
-      <Text>about</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>ShopMate</Text>
+      <Text style={styles.description}>
+      Shopping mall assistance system is for shopping
+      malls makes shopping easier and more fun! 
+      With our app, you can use your phone to find your 
+      way around the mall using cool AR technology. 
+      It's like a treasure hunt - but for your favorite shops! 
+      Plus, if you need help, you can find medical assistance, 
+      security, and other helpful services right from the app. 
+      And don't worry about missing out on deals or events 
+      our app keeps you updated on all the exciting stuff 
+      happening in the mall.{"\n"} 
+      Shopping has never been this easy and enjoyable!
+      </Text>
+      <Text style={styles.number1}>ShopMate Support</Text>
+      <Text style={styles.mobile}>01111111111</Text>
+      <Text style={styles.number2}>Email</Text>
+      <Text style={styles.email}>shopmate@gmail.com</Text>
     </View>
-  )
-}
+  );
+};
 
-export default about
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
+  text: {
+    fontSize: 33,
+    fontWeight: 'bold',
+    bottom: 120,
+    color: 'black',
+  },
+  description: {
+    fontSize: 15,
+    textAlign: 'center',
+    marginHorizontal: 20,
+    marginTop: 20,
+    color: 'black',
+    bottom: 125,
+  },
+  number1: {
+    fontSize: 19,
+    marginHorizontal: 20,
+    marginTop: 20,
+    color: 'black',
+    bottom: 110,
+    fontWeight: 'bold',
+    marginLeft: -140,
+  },
+  number2: {
+    fontSize: 19,
+    marginHorizontal: 20,
+    marginTop: 20,
+    color: 'black',
+    bottom: 110,
+    fontWeight: 'bold',
+    marginLeft: -245,
+  },
+  mobile: {
+    fontSize: 16,
+    marginHorizontal: 20,
+    marginTop: 20,
+    color: '#5B95D7',
+    bottom: 125,
+    marginLeft: -190,
+  },
+  email: {
+    fontSize: 16,
+    marginHorizontal: 20,
+    marginTop: 20,
+    color: '#5B95D7',
+    bottom: 130,
+    marginLeft: -130,
+  },
+});
+
+export default ShopMateText;
