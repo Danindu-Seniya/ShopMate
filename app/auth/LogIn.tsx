@@ -59,6 +59,7 @@ const LogIn = () => {
               color="black"
               top={10}
               left={3}
+              marginLeft= {20}
               onPress={() => {
                 router.push("/Start");
               }}
@@ -75,6 +76,7 @@ const LogIn = () => {
             style={{
               fontSize: 24,
               alignItems: "flex-start",
+              fontWeight: 'bold'
             }}
           >
             Log In
@@ -88,6 +90,7 @@ const LogIn = () => {
             fontSize: 32,
             marginTop: 20,
             marginLeft: 20,
+            fontWeight: 'bold'
           }}
         >
           Welcome Back!
@@ -117,6 +120,8 @@ const LogIn = () => {
               borderColor: "black",
               borderRadius: 10,
               height: 40,
+              marginLeft: 5,
+              marginRight: 5
             }}
             placeholder="Email"
             keyboardType="email-address"
@@ -138,6 +143,8 @@ const LogIn = () => {
               borderColor: "black",
               borderRadius: 10,
               height: 40,
+              marginLeft: 5,
+              marginRight: 5
             }}
             placeholder="Password"
             secureTextEntry={true}
@@ -157,6 +164,7 @@ const LogIn = () => {
           marginTop: 300,
           marginHorizontal: 40,
           borderRadius: 10,
+          bottom: -40
         }}
         onPress={signIn}
       >
@@ -165,6 +173,7 @@ const LogIn = () => {
             color: "white",
             fontSize: 18,
             fontWeight: "400",
+            
           }}
         >
           LOG IN
@@ -179,12 +188,14 @@ const LogIn = () => {
           marginTop: -1,
           marginHorizontal: 40,
           borderRadius: 10,
+          
         }}
         onPress={() => console.log("Foget Password")}
       >
         <Text
           style={{
             fontSize: 16,
+            bottom: 40
           }}
         >
           {"Foget Password"}
