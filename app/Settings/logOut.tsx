@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const ThankYouScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Thank you for using</Text>
-      <Text style={styles.shopmate}>ShopMate</Text>
+      <Image
+        source={require('../../assets/images/Shopmate (2).png')}
+
+        style={styles.image}
+      />
     </View>
     
   );
@@ -28,6 +32,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     bottom: 30,
+  },
+  image: {
+    width: 200, // Adjust as needed
+    height: 70, // Adjust as needed
+    marginBottom: 20,
+    bottom: 50,
   },
 });
 

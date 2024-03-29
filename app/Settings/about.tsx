@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const ShopMateText: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>ShopMate</Text>
+      <Image
+        source={require('../../assets/images/Shopmate (2).png')}
+
+        style={styles.image}
+      />
       <Text style={styles.description}>
       With this app for shopping
       malls makes shopping easier and more fun! 
@@ -80,6 +84,12 @@ const styles = StyleSheet.create({
     color: '#5B95D7',
     bottom: 130,
     marginLeft: -130,
+  },
+  image: {
+    width: 200, // Adjust as needed
+    height: 70, // Adjust as needed
+    marginBottom: 20,
+    bottom: 90,
   },
 });
 
