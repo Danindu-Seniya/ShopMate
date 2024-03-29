@@ -5,14 +5,16 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import {MaterialIcons} from "@expo/vector-icons";
+import { Fontisto } from '@expo/vector-icons';
 
 export default function reqMedical() {
   return (
     <View style={styles.container}>
-     <MaterialIcons name="emergency-share" size={150} color="#727272" />
+     <Fontisto name="map-marker-alt" size={150} color="red" />
      <Text style={styles.title}>Share Your Location</Text>
      <Text style={styles.sentence}>
-     Scan the closest shop front and connect with the service.
+     Scan the closest shop front and{"\n"} 
+     connect with the service.
      </Text>
 
      <View style={styles.buttonWrapper}>
@@ -43,15 +45,14 @@ const styles = StyleSheet.create({
    fontSize: 35,
    fontWeight: "bold",
    paddingTop: 10,
+   bottom: -100
  },
  sentence: {
    fontSize: 14,
+   alignItems: "center",
+
  },
- separator: {
-   marginVertical: 30,
-   height: 1,
-   width: "80%",
- },
+ 
  button: {
   alignItems: "center",
   justifyContent: "center",
@@ -59,7 +60,8 @@ const styles = StyleSheet.create({
   height: 60,
   borderRadius: 30,
   elevation: 3,
-  backgroundColor: "black",
+  backgroundColor: "#2E77E5",
+  bottom: 100,
  },
  buttonText: {
    fontSize: 16,
@@ -67,6 +69,7 @@ const styles = StyleSheet.create({
    fontWeight: "bold",
    letterSpacing: 0.25,
    color: "white",
+   bottom: -100,
  },
  buttonWrapper: {
    alignItems: "center",
@@ -76,5 +79,6 @@ const styles = StyleSheet.create({
  buttonWrapperText: {
    fontWeight: "bold",
    paddingVertical: 10,
+   bottom: -60,
  },
 });
