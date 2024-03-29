@@ -49,11 +49,11 @@ export default function TabThreeScreen() {
 
         {/* Text */}
         <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330 }}>Gehan Fernando</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330,  }}>Gehan Fernando</Text>
 
-          <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent", bottom: 330, }}>
-            <Text style={{ fontSize: 20 }}>Age:</Text>
-            <Text style={{ fontSize: 20 }}>25</Text>
+          <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
+            <Text style={{ fontSize: 20, color: 'white' }}>Age:</Text>
+            <Text style={{ fontSize: 20, color: 'white' }}>25</Text>
           </View>
         </View>
 
@@ -248,8 +248,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     width: '90%',
-    borderWidth: 1,
-    borderColor: '#ccc',
+   backgroundColor: 'white',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,

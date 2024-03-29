@@ -15,6 +15,8 @@ export default function TabTwoScreen() {
           <View style={{
             flexDirection: 'row',
             marginTop: 10,
+            
+            
           }}>
             <View>
               <Text
@@ -23,6 +25,7 @@ export default function TabTwoScreen() {
                   fontWeight: "bold",
                   marginLeft: 30,
                   marginTop: 5,
+                  
                 }}
               >
                 Hello {'Jane'}!
@@ -35,6 +38,7 @@ export default function TabTwoScreen() {
                   bottom: -30,
                   marginLeft: -112,
                   marginTop: 5,
+                  
                 }}
               >
                 What you looking for?
@@ -73,7 +77,7 @@ export default function TabTwoScreen() {
             onPress={() => console.log("Promotion open")}
           >
             <Image
-              style={{ width: 280, height: 280, marginLeft: 13 }}
+              style={{ width: 280, height: 280, marginLeft: 20, borderRadius: 13 }}
               source={require("@/assets/images/offer.png")}
             />
           </TouchableOpacity>
@@ -310,7 +314,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2E77E5",
+    backgroundColor: "#EEF0FA",
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -326,12 +330,12 @@ const styles = StyleSheet.create({
   },
   promotions: {
     justifyContent: "center",
-    marginTop: 20,
-    marginLeft: 30,
+    
+    backgroundColor: "#EEF0FA",
   },
   eventcalendar: {
-    marginHorizontal: 30,
-    marginTop: 20,
+    
+    backgroundColor: "#EEF0FA",
   },
   
 });

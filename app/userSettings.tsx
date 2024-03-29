@@ -45,7 +45,7 @@ export default function UserSettingsScreen() {
       <View style={styles.logoutContainer}>
         <TouchableOpacity onPress={()=>router.push("../Settings/logOut")}>
         <View style={styles.buttonContent}>
-        <AntDesign name="logout" size={24} color="black" style={styles.icon} />
+        <AntDesign name="logout" size={24} color="black" style={styles.logouticon} />
           <Text style={styles.logoutButtonText}>Log Out</Text>
           </View>
         </TouchableOpacity>
@@ -59,19 +59,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#E5E7F4",
   },
   buttonContainer: {
     marginBottom: 20,
-    borderWidth: 3,
-    borderColor: "#5B95D7",
+    
+    
     borderRadius: 10,
     width: "80%", 
+    backgroundColor: 'white'
   },
   logoutContainer: {
     marginBottom: 20,
-    borderWidth: 3,
-    borderColor: "red",
+    backgroundColor: 'red',
     borderRadius: 10,
     width: "80%", 
   },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   logoutButtonText: {
-    color: "black",
+    color: "white",
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "left",
@@ -97,5 +97,10 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: 10,
+    color: '#2E77E5'
+  },
+  logouticon: {
+    marginLeft: 10,
+    color: 'white'
   },
 });
