@@ -6,7 +6,7 @@ const ThankYouScreen: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.text}>Thank you for using</Text>
       <Image
-        source={require('../../assets/images/Shopmate (2).png')}
+        source={require('../../assets/images/SM4.png')}
 
         style={styles.image}
       />
@@ -20,12 +20,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#EEF0FA'
   },
   text: {
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: 'bold',
     textAlign: 'center',
-    bottom: 30,
+    bottom: 35,
   },
   shopmate: {
     fontSize: 33,
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     bottom: 30,
   },
   image: {
-    width: 200, // Adjust as needed
+    width: 250, // Adjust as needed
     height: 70, // Adjust as needed
     marginBottom: 20,
     bottom: 50,

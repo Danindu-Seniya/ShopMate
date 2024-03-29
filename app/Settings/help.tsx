@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#EEF0FA'
   },
   text1: {
     fontSize: 22,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingHorizontal: 10,
     borderRadius: 10,
-    backgroundColor: '#C7E8EC',
+    backgroundColor: 'white',
     bottom: 40,
     paddingTop: -20,
   },
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   },
   reportText1: {
     fontSize: 16,
-    color: 'black',
+    color: '#2E77E5',
     textAlign: 'right',
     marginTop: 5,
     marginLeft: 200,

@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#EEF0FA'
   },
   text1: {
     fontSize: 22,
@@ -41,13 +42,11 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '80%',
-    borderColor: 'gray',
-    borderWidth: 1,
     marginTop: 20,
     paddingHorizontal: 10,
     bottom: 80,
     borderRadius: 10,
-    backgroundColor: '#DADADA',
+    backgroundColor: 'white',
   },
   textbox1: {
     fontSize: 18,

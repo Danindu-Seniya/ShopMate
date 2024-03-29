@@ -5,7 +5,7 @@ const ShopMateText: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/images/Shopmate (2).png')}
+        source={require('../../assets/images/SM4.png')}
 
         style={styles.image}
       />
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    
+    backgroundColor: '#EEF0FA'
   },
   text: {
     fontSize: 33,
