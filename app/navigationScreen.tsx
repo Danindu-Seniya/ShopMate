@@ -29,12 +29,13 @@ const SearchableShopList = () => {
         <View className='flex-row alignItems-center height-40 borderColor-gray-300 border-2 rounded-lg px-1 py-2 width-50% alignSelf-center' >
     <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray" marginLeft= {20}/>
       <TextInput
-        className='flex-1 height-100% width-70% fontSize-16 ' 
+        className='flex-1 height-100% width-70% fontSize-16 marginLeft= {80}'
         placeholder="Search shops..."
         onChangeText={text => setSearchText(text)}
         value={searchText}
       />
       </View>
+      
       <FlatList
         data={filteredShops}
         renderItem={({ item }) => (

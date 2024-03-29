@@ -1,4 +1,3 @@
-
 import { ScrollView, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import EditScreenInfo from "@/components/EditScreenInfo";
@@ -8,7 +7,9 @@ import React from "react";
 
 export default function TabTwoScreen() {
   return (
+    
     <SafeAreaView style={styles.container}>
+        
       <ScrollView>
         <View>
           <View style={{
@@ -16,34 +17,49 @@ export default function TabTwoScreen() {
             marginTop: 10,
           }}>
             <View>
-              <Image style={{
-                height: 50,
-                width: 50,
-                marginLeft: 30,
-              }}
-                source={require("@/assets/images/Profile_photo.png")} />
-            </View>
-            <View>
               <Text
                 style={{
                   fontSize: 25,
                   fontWeight: "bold",
-                  marginLeft: 10,
+                  marginLeft: 30,
                   marginTop: 5,
                 }}
               >
                 Hello {'Jane'}!
               </Text>
             </View>
-            <TouchableOpacity onPress={() => console.log("Emergency open")} >
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  bottom: -30,
+                  marginLeft: -112,
+                  marginTop: 5,
+                }}
+              >
+                What you looking for?
+              </Text>
+            </View>
+            <View>
+              <Image style={{
+                height: 50,
+                width: 50,
+                marginLeft: 100,
+                bottom: -6,
+                
+              }}
+                source={require("@/assets/images/Profile_photo.png")} />
+            </View>
+            
+            {/* <TouchableOpacity onPress={() => console.log("Emergency open")} >
               <Image style={{ marginLeft: 100 }}
                 source={require("@/assets/images/emergency.png")}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <Text
             style={{
-              fontSize: 17,
+              fontSize: 19,
               fontWeight: "bold",
               marginLeft: 30,
               marginTop: 20,
@@ -57,14 +73,14 @@ export default function TabTwoScreen() {
             onPress={() => console.log("Promotion open")}
           >
             <Image
-              style={{ width: 300, height: 300 }}
+              style={{ width: 280, height: 280, marginLeft: 13 }}
               source={require("@/assets/images/offer.png")}
             />
           </TouchableOpacity>
 
           <Text
             style={{
-              fontSize: 17,
+              fontSize: 19,
               fontWeight: "bold",
               marginTop: 30,
               marginLeft: 30,
@@ -83,15 +99,14 @@ export default function TabTwoScreen() {
                   flexDirection: "row",
                   height: 130,
                   width: 310,
-                  borderRadius: 20,
-                  borderWidth: 2,
-                  backgroundColor: "black",
+                  
+                  backgroundColor: "white",
                 }}
                 onPress={() => console.log("Event1 open")}
               >
                 <View
                   style={{
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     borderRadius: 20,
                     justifyContent: "center",
                     marginRight: 5,
@@ -111,7 +126,7 @@ export default function TabTwoScreen() {
                 <View
                   style={{
                     flex: 1,
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     marginTop: 5,
                     marginBottom: 5,
                     marginRight: 10,
@@ -120,7 +135,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                       fontSize: 15,
                       fontWeight: "bold",
                     }}
@@ -130,7 +145,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Description
@@ -138,7 +153,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Date
@@ -153,15 +168,14 @@ export default function TabTwoScreen() {
                   flexDirection: "row",
                   height: 130,
                   width: 310,
-                  borderRadius: 20,
-                  borderWidth: 2,
-                  backgroundColor: "black",
+                  
+                  backgroundColor: "white",
                 }}
                 onPress={() => console.log("Event2 open")}
               >
                 <View
                   style={{
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     borderRadius: 20,
                     justifyContent: "center",
                     marginRight: 5,
@@ -181,7 +195,7 @@ export default function TabTwoScreen() {
                 <View
                   style={{
                     flex: 1,
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     marginTop: 5,
                     marginBottom: 5,
                     marginRight: 10,
@@ -190,7 +204,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                       fontSize: 15,
                       fontWeight: "bold",
                     }}
@@ -200,7 +214,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Description
@@ -208,7 +222,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Date
@@ -223,15 +237,14 @@ export default function TabTwoScreen() {
                   flexDirection: "row",
                   height: 130,
                   width: 310,
-                  borderRadius: 20,
-                  borderWidth: 2,
-                  backgroundColor: "black",
+                  
+                  backgroundColor: "white",
                 }}
                 onPress={() => console.log("Event3 open")}
               >
                 <View
                   style={{
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     borderRadius: 20,
                     justifyContent: "center",
                     marginRight: 5,
@@ -251,7 +264,7 @@ export default function TabTwoScreen() {
                 <View
                   style={{
                     flex: 1,
-                    backgroundColor: "black",
+                    backgroundColor: "white",
                     marginTop: 5,
                     marginBottom: 5,
                     marginRight: 10,
@@ -260,7 +273,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                       fontSize: 15,
                       fontWeight: "bold",
                     }}
@@ -270,7 +283,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Description
@@ -278,7 +291,7 @@ export default function TabTwoScreen() {
                   <Text
                     style={{
                       textAlign: "center",
-                      color: "white",
+                      color: "black",
                     }}
                   >
                     Event Date
@@ -297,7 +310,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    backgroundColor: "#2E77E5",
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -307,8 +320,9 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 30,
-    height: 1,
+    height: 1 ,
     width: '80%',
+    
   },
   promotions: {
     justifyContent: "center",
@@ -319,6 +333,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     marginTop: 20,
   },
+  
 });
-
-

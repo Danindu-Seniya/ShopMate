@@ -39,11 +39,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 10,
+    
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
     paddingTop: 10,
+    color: "#2E77E5",
   },
   sentence: {
     fontSize: 16,
@@ -61,12 +63,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 100,
     borderRadius: 8,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#2E77E5",
     fontSize: 16,
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
+    
   },
   buttonText: {
     fontSize: 16,
