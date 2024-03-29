@@ -15,7 +15,7 @@ export default function Start() {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require('../assets/images/SM4.png')}
+        source={require('../assets/images/SM7.png')}
 
         style={styles.imagelogo}
       />
