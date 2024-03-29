@@ -45,11 +45,13 @@ const LogIn = () => {
       <View
         style={{
           flexDirection: "row",
+          
         }}
       >
         <View
           style={{
             flex: 1,
+            
           }}
         >
           <TouchableOpacity>
