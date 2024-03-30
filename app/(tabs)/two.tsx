@@ -6,8 +6,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore";
 import { FIREBASE_DB } from "@/Firebaseconfig";
-import Eventcaendercomp from "@/components/eventcaendercomp";
-import Promotioncomp from "@/components/promotioncomp";
+import Eventcaendercomp from "../../components/Eventcaendercomp";
+import Promotioncomp from "../../components/Promotioncomp";
 
 export default function TabTwoScreen() {
   const [fName, setFName] = useState("");
