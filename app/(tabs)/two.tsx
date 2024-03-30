@@ -4,6 +4,9 @@ import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
+import { Link } from "expo-router";
+import Events from "../Events";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 export default function TabTwoScreen() {
   return (
@@ -72,6 +75,8 @@ export default function TabTwoScreen() {
             Promotions
           </Text>
 
+
+            {/* promotion  */}
           <TouchableOpacity
             style={styles.promotions}
             onPress={() => console.log("Promotion open")}
@@ -94,215 +99,17 @@ export default function TabTwoScreen() {
           </Text>
 
           <View style={styles.eventcalendar}>
-            <View>
-              <Text>Today</Text>
-
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  height: 130,
-                  width: 310,
-                  
-                  backgroundColor: "white",
-                }}
-                onPress={() => console.log("Event1 open")}
-              >
-                <View
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: 20,
-                    justifyContent: "center",
-                    marginRight: 5,
-                  }}
-                >
-                  <Image
-                    style={{
-                      flex: 1,
-                      marginTop: 5,
-                      marginBottom: 5,
-                      borderRadius: 10,
-                      marginLeft: 10,
-                    }}
-                    source={require("@/assets/images/event01.png")}
-                  />
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    backgroundColor: "white",
-                    marginTop: 5,
-                    marginBottom: 5,
-                    marginRight: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                      fontSize: 15,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Event Title
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Description
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Date
-                  </Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{
-                  marginTop: 10,
-                  flex: 1,
-                  flexDirection: "row",
-                  height: 130,
-                  width: 310,
-                  
-                  backgroundColor: "white",
-                }}
-                onPress={() => console.log("Event2 open")}
-              >
-                <View
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: 20,
-                    justifyContent: "center",
-                    marginRight: 5,
-                  }}
-                >
-                  <Image
-                    style={{
-                      flex: 1,
-                      marginTop: 5,
-                      marginBottom: 5,
-                      borderRadius: 10,
-                      marginLeft: 10,
-                    }}
-                    source={require("@/assets/images/sa 1.png")}
-                  />
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    backgroundColor: "white",
-                    marginTop: 5,
-                    marginBottom: 5,
-                    marginRight: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                      fontSize: 15,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Event Title
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Description
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Date
-                  </Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{
-                  marginTop: 10,
-                  flex: 1,
-                  flexDirection: "row",
-                  height: 130,
-                  width: 310,
-                  
-                  backgroundColor: "white",
-                }}
-                onPress={() => console.log("Event3 open")}
-              >
-                <View
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: 20,
-                    justifyContent: "center",
-                    marginRight: 5,
-                  }}
-                >
-                  <Image
-                    style={{
-                      flex: 1,
-                      marginTop: 5,
-                      marginBottom: 5,
-                      borderRadius: 10,
-                      marginLeft: 10,
-                    }}
-                    source={require("@/assets/images/sa 1.png")}
-                  />
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    backgroundColor: "white",
-                    marginTop: 5,
-                    marginBottom: 5,
-                    marginRight: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                      fontSize: 15,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Event Title
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Description
-                  </Text>
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "black",
-                    }}
-                  >
-                    Event Date
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+          <View style={{ flexDirection: "row" }}>
+          <Text style={styles.calendarText}>Event Calendar</Text>
+          <TouchableOpacity style={styles.iconButton}>
+            <Link href="../CreateEvents">
+              <Icon name="add-circle" size={30} color="#FFFFFF" />
+            </Link>
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+          <Events />
+        </ScrollView>
           </View>
         </View>
       </ScrollView>
@@ -336,6 +143,18 @@ const styles = StyleSheet.create({
   eventcalendar: {
     
     backgroundColor: "#EEF0FA",
+  },
+  calendarText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginLeft: 50,
+    marginTop: 10,
+
+    bottom: -30,
+    color: 'black',
+  },
+  iconButton: {
+    marginLeft: 150,
   },
   
 });
