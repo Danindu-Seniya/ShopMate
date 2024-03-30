@@ -5,11 +5,12 @@ import { Text, View } from "@/components/Themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Link, router } from "expo-router";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function TabOneScreen() {
   return (
      <View style={styles.container}>
-      <SimpleLineIcons name="location-pin" size={150} color="#727272" />
+      <FontAwesome5 name="map-marker-alt" size={160} color="black" />
       <Text style={styles.title}>Navigate Easily</Text>
       <Text style={styles.sentence}>
         Find your destination easy and fast{"\n"}

@@ -45,11 +45,11 @@ export default function TabThreeScreen() {
           />
           
         </View>
-        <View style={{ width: 358, height: 200, bottom: 100, marginLeft: 2, borderRadius: 25, backgroundColor: "#2E77E5"}}></View>
+        <View style={{ flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center',width: 358, height: 200, bottom: 100, marginLeft: 2, borderRadius: 25, backgroundColor: "#2E77E5"}}></View>
 
         {/* Text */}
         <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330,  }}>Gehan Fernando</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330, color: 'white' }}>Gehan Fernando</Text>
 
           <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
             <Text style={{ fontSize: 20, color: 'white' }}>Age:</Text>
