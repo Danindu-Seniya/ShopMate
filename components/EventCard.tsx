@@ -13,8 +13,8 @@ const EventCard: FC<EventCardProps> = (props) => {
   const { name, logo, rating, id } = props;
 
   return (
-  <View style={{marginTop:10}}>
-    <Text style={{color:'white',marginLeft:30, bottom: -10, fontSize: 17}}>
+  <View style={{marginTop:20}}>
+    <Text style={{color:'black',marginLeft:30, bottom: -45, fontSize: 17}}>
         Today
     </Text>
     <View style={styles.container}>
@@ -38,14 +38,14 @@ const EventCard: FC<EventCardProps> = (props) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "#000",
+    backgroundColor: "white",
     borderRadius: 25,
     alignSelf: "center",
     marginVertical: 5,
     padding: 5,
-    bottom: -15,
-    height: 120,
-    width: 330
+    bottom: -50,
+    height: 110,
+    width: 310
   },
   logo: {
     width: 80,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: "bold",
-    color: "white",
+    color: "black",
     fontSize: 20,
     marginBottom: 5,
     marginLeft: 5,
@@ -75,17 +75,18 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 15,
-    color: "white",
+    color: "black",
     fontWeight: "100",
   },
   heading: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
+    
   },
   edit: {
     fontWeight: "bold",
-    color: "white",
+    color: "black",
 
     fontSize: 12,
     marginBottom: 5,
