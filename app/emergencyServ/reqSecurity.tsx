@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import {MaterialIcons} from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons'; 
+import {Camera} from "expo-camera";
 
 export default function reqSecurity() {
   return (
