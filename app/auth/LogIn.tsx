@@ -120,37 +120,14 @@ const LogIn = () => {
           height: 45,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 300,
+          marginTop:500,
           marginHorizontal: 40,
           borderRadius: 10,
+
         }}
         onPress={signIn}
       >
         <Text style={{ color: "white", fontSize: 18, fontWeight: "400" }}>LOG IN</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{
-          height: 45,
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: 300,
-          marginHorizontal: 40,
-          borderRadius: 10,
-          
-        }}
-        onPress={signIn}
-      >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 18,
-            fontWeight: "400",
-            
-          }}
-        >
-          LOG IN
-        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -163,7 +140,7 @@ const LogIn = () => {
           borderRadius: 10,
           
         }}
-        onPress={() => console.log("Foget Password")}
+        onPress={() => router.push("/auth/RegisterUser")}
       >
         <Text
           style={{
@@ -171,7 +148,7 @@ const LogIn = () => {
             
           }}
         >
-          {"Foget Password"}
+          {"Create Account"}
         </Text>
       </TouchableOpacity>
     </ScrollView>
