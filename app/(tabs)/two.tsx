@@ -5,7 +5,7 @@ import { Text, View } from "@/components/Themed";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
-export default function TabTwoScreen() {
+const TabTwoScreen: React.FC = () => {
   return (
     
     <SafeAreaView style={styles.container}>
@@ -311,16 +311,75 @@ export default function TabTwoScreen() {
 
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EEF0FA",
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#E5E7F4', // Changed background color
   },
-  title: {
-    fontSize: 20,
+  text: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginLeft: 40,
+    marginTop: -60,
+    color:'white'
+  },
+  text1: {
+    fontSize: 18,
+    marginLeft: 40,
+    marginTop: -5,
+    color:'white'
+  },
+  text2: {
+    fontSize: 11,
+    marginLeft: 140,
+    marginTop: -5,
+    bottom: -100,
+    color:'#2E77E5'
+  },
+  text3: {
+    fontSize: 16,
+    marginLeft: 140,
+    marginTop: -5,
+    bottom: -105,
+    color:'black',
+    fontWeight: 'bold',
+  },
+  box: {
+    width: 358,
+    height: 200,
+    backgroundColor: '#2E77E5',
+    marginTop: -80, // Adjust this value as needed
+    alignSelf: 'center', // Centers the box horizontally
+    marginLeft: 2, 
+    borderRadius: 25,
+    bottom: -100,
+  },
+  locationBox: {
+    width: 278,
+    height: 45,
+    backgroundColor: 'white',
+    marginTop: -80, // Adjust this value as needed
+    alignSelf: 'center', // Centers the box horizontally
+    marginLeft: 150, 
+    borderRadius: 25,
+    bottom: -100,
+  },
+  iconBox: {
+    width: 180,
+    height: 45,
+    backgroundColor: 'white',
+    marginTop: -80, // Adjust this value as needed
+    alignSelf: 'center', // Centers the box horizontally
+    marginLeft: -350, 
+    borderRadius: 25,
+    bottom: -135,
+  },
+  promotionsText:{
+    fontSize: 18,
+    marginLeft: 30,
+    marginTop: -5,
+    bottom: -155,
+    color:'black',
     fontWeight: 'bold',
     
   },
