@@ -6,7 +6,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { Link } from "expo-router";
 import Events from "../Events";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Promo from "../Promo";
+
 
 export default function TabTwoScreen() {
   return (
@@ -16,10 +18,8 @@ export default function TabTwoScreen() {
       <ScrollView>
         <View>
           <View style={{
-            flexDirection: 'row',
+            // flexDirection: 'row',
             marginTop: 10,
-            
-            
           }}>
             <View>
               <Text
@@ -41,6 +41,7 @@ export default function TabTwoScreen() {
                   bottom: -30,
                   marginLeft: -112,
                   marginTop: 5,
+                  color:'black'
                   
                 }}
               >
@@ -63,6 +64,8 @@ export default function TabTwoScreen() {
                 source={require("@/assets/images/emergency.png")}
               />
             </TouchableOpacity> */}
+
+            
           </View>
           <Text
             style={{
@@ -81,13 +84,10 @@ export default function TabTwoScreen() {
             style={styles.promotions}
             onPress={() => console.log("Promotion open")}
           >
-            <Image
-              style={{ width: 280, height: 280, marginLeft: 20, borderRadius: 13 }}
-              source={require("@/assets/images/offer.png")}
-            />
+            <Promo />
           </TouchableOpacity>
 
-          <Text
+          {/* <Text
             style={{
               fontSize: 19,
               fontWeight: "bold",
@@ -96,7 +96,7 @@ export default function TabTwoScreen() {
             }}
           >
             Event calendar
-          </Text>
+          </Text> */}
 
           <View style={styles.eventcalendar}>
           <View style={{ flexDirection: "row" }}>
@@ -137,12 +137,8 @@ const styles = StyleSheet.create({
   },
   promotions: {
     justifyContent: "center",
-    
-    backgroundColor: "#EEF0FA",
   },
   eventcalendar: {
-    
-    backgroundColor: "#EEF0FA",
   },
   calendarText: {
     fontSize: 18,
