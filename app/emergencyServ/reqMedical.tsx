@@ -1,97 +1,67 @@
-import React from "react";
-import { useState } from "react";
-import { StyleSheet, TouchableOpacity, Pressable } from "react-native";
+import React, { useRef, useEffect } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "@/components/Themed";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { Link } from "expo-router";
-import {MaterialIcons} from "@expo/vector-icons";
-import { Camera, CameraType } from "expo-camera";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Camera } from 'expo-camera';
 
 export default function reqMedical() {
-  const [type, setType] = useState(CameraType.back);
-  const [permission, requestPermission] = Camera.useCameraPermissions();
-  const [hasPermission, setHasPermission] = useState(null);
+  const cameraRef = useRef(null);
 
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      if (status === 'granted') {
+        // Permission granted, initialize the camera
+        // Here, we are accessing the back camera
+        await cameraRef.current?.initializeAsync({ type: Camera.Constants.Type.back });
+      } else {
+        // Permission denied, display an error message or handle it accordingly
+        console.log('Camera permission not granted');
+      }
+    })();
+  }, []);
 
-  function toggleCameraType() {
-    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
-  }
+  const handleCameraPress = async () => {
+    // Take a photo or perform any other action with the camera
+    // For simplicity, let's just log a message for now
+    console.log('Take a photo or perform any other action with the camera');
+  };
 
   return (
     <View style={styles.container}>
-     <MaterialIcons name="emergency-share" size={150} color="#727272" />
-     <Text style={styles.title}>Share Your Location</Text>
-     <Text style={styles.sentence}>
-     Scan the closest shop front and connect with the service.
-     </Text>
+      <Camera
+        style={styles.camera}
+        ref={cameraRef}
+      />
 
-     <View style={styles.buttonWrapper}>
-
-       <Text style={styles.buttonWrapperText}>
-         Click camera to connect{" "}
-       </Text>
-
-       <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-          <MaterialIcons name="photo-camera" size={24} color="white" />
-        </TouchableOpacity>
-        </View>
-       
-     </View>
-   </View>
- );
+      <TouchableOpacity style={styles.button} onPress={handleCameraPress}>
+        <MaterialIcons name="photo-camera" size={24} color="white" />
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
- container: {
-   flex: 1,
-   alignItems: "center",
-   justifyContent: "center",
-   paddingTop: 10,
- },
- title: {
-   fontSize: 35,
-   fontWeight: "bold",
-   paddingTop: 10,
- },
- sentence: {
-   fontSize: 14,
- },
- separator: {
-   marginVertical: 30,
-   height: 1,
-   width: "80%",
- },
- button: {
-  alignItems: "center",
-  justifyContent: "center",
-  width: 60,
-  height: 60,
-  borderRadius: 30,
-  elevation: 3,
-  backgroundColor: "black",
- },
- buttonText: {
-   fontSize: 16,
-   lineHeight: 21,
-   fontWeight: "bold",
-   letterSpacing: 0.25,
-   color: "white",
- },
- buttonWrapper: {
-   alignItems: "center",
-   justifyContent: "center",
-   paddingTop: 150,
- },
- buttonWrapperText: {
-   fontWeight: "bold",
-   paddingVertical: 10,
- },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 10,
+    backgroundColor: '#EEF0FA'
+  },
+  camera: {
+    width: '100%',
+    height: '100%',
+  },
+  button: {
+    position: 'absolute',
+    bottom: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    elevation: 3,
+    backgroundColor: "#2E77E5",
+  },
 });
