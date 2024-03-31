@@ -78,8 +78,7 @@ const LogIn = () => {
           <Text>Email:</Text>
           <TextInput
             style={{
-              borderWidth: 2,
-              borderColor: "black",
+              backgroundColor: "white",
               borderRadius: 10,
               height: 40,
               marginLeft: 5,
@@ -97,8 +96,7 @@ const LogIn = () => {
           <Text>Password:</Text>
           <TextInput
             style={{
-              borderWidth: 2,
-              borderColor: "black",
+              backgroundColor: "white",
               borderRadius: 10,
               height: 40,
               marginLeft: 5,
@@ -116,18 +114,19 @@ const LogIn = () => {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1164C42",
           height: 45,
           justifyContent: "center",
           alignItems: "center",
           marginTop:500,
           marginHorizontal: 40,
           borderRadius: 10,
-
+          bottom: 130
+          
         }}
         onPress={signIn}
       >
-        <Text style={{ color: "white", fontSize: 18, fontWeight: "400" }}>LOG IN</Text>
+        <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>Log in</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -145,7 +144,7 @@ const LogIn = () => {
         <Text
           style={{
             fontSize: 16,
-            
+            bottom: 130
           }}
         >
           {"Create Account"}

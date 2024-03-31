@@ -33,7 +33,7 @@ export default function TabThreeScreen() {
       <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#EEF0FA" }}>
         <Image
           style={{ width: 85, height: 85, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 1, marginLeft: 248,bottom: -5, }}
-          source={require("../../assets/images/maleAvatar.jpg")}   
+          source={require("../../assets/images/Profile_photo.png")}   
         />
         
 
@@ -49,7 +49,7 @@ export default function TabThreeScreen() {
 
         {/* Text */}
         <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330, color: 'white' }}>Gehan Fernando</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330, color: 'white' }}>Jane Fernando</Text>
 
           <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
             <Text style={{ fontSize: 20, color: 'white' }}>Age:</Text>
@@ -91,15 +91,15 @@ export default function TabThreeScreen() {
           (<View style={{backgroundColor:"white", width:"85%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40, bottom: 350,}}>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Name</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Gehan</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Jane</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Age</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 31</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 25</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Gender</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Male</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Female</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Special health conditions</Text>

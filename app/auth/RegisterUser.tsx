@@ -188,7 +188,7 @@ export default function RegisterUser() {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1164C4",
           height: 45,
           justifyContent: "center",
           alignItems: "center",
@@ -203,7 +203,7 @@ export default function RegisterUser() {
           style={{
             color: "white",
             fontSize: 18,
-            fontWeight: "400",
+            fontWeight: "bold",
             
           }}
         >
@@ -249,8 +249,7 @@ const styles = StyleSheet.create({
     
   },
   textInput: {
-    borderWidth: 2,
-    borderColor: "black",
+    backgroundColor: "white",
     borderRadius: 10,
     height: 42,
     marginLeft: 5,
