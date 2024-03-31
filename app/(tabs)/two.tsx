@@ -1,44 +1,117 @@
-import React from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
-import Events from '../Events';
+import { ScrollView, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const TabTwoScreen: React.FC = () => {
+import EditScreenInfo from "@/components/EditScreenInfo";
+import { Text, View } from "@/components/Themed";
+import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
+import { Link } from "expo-router";
+import Events from "../Events";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Promo from "../Promo";
 
+
+export default function TabTwoScreen() {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.box}></View>
-      <Text style={styles.text}>Hello Jane!</Text>
-      <Text style={styles.text1}>What are you looking for?</Text>
-      <View style={styles.locationBox}></View>
-      <View style={styles.iconBox}></View>
-      <Text style={styles.text2}>Current Location</Text>
-      <Text style={styles.text3}>Kzone Shopping Mall</Text>
-      <FontAwesome5 name="map-marker-alt" size={24} color="black" marginLeft={60} bottom={-75}/>
+    
+    <SafeAreaView style={styles.container}>
+        
+      <ScrollView>
+        <View>
+          <View style={{
+            // flexDirection: 'row',
+            marginTop: 10,
+          }}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontWeight: "bold",
+                  marginLeft: 30,
+                  marginTop: 5,
+                  
+                }}
+              >
+                Hello {'Jane'}!
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  bottom: -30,
+                  marginLeft: -112,
+                  marginTop: 5,
+                  color:'black'
+                  
+                }}
+              >
+                What you looking for?
+              </Text>
+            </View>
+            <View>
+              <Image style={{
+                height: 50,
+                width: 50,
+                marginLeft: 100,
+                bottom: -6,
+                
+              }}
+                source={require("@/assets/images/Profile_photo.png")} />
+            </View>
+            
+            {/* <TouchableOpacity onPress={() => console.log("Emergency open")} >
+              <Image style={{ marginLeft: 100 }}
+                source={require("@/assets/images/emergency.png")}
+              />
+            </TouchableOpacity> */}
 
-      {/* Profile Photo */}
-      <Image
-        source={require('../../assets/images/Profile_photo.png')}
-        style={styles.profilePhoto}
-      />
+            
+          </View>
+          <Text
+            style={{
+              fontSize: 19,
+              fontWeight: "bold",
+              marginLeft: 30,
+              marginTop: 20,
+            }}
+          >
+            Promotions
+          </Text>
 
-      {/* Promotions */}
-      <Text style={styles.promotionsText}>Promotions</Text>
-      <Image
-        source={require('../../assets/images/offer.png')}
-        style={styles.promotionsImage}
-      />
 
-      {/* Event Calendar */}
-{/*       
-      <Text style={styles.eventsText}>Upcoming Events</Text>
-      <Text style={styles.date}>Today</Text>
-      <View style={styles.eventBox1}></View>
-      <View style={styles.eventBox2}></View> */}
-      
-<Text style={styles.eventsText}>Upcoming Events</Text>
-      <Events />
-      
+            {/* promotion  */}
+          <TouchableOpacity
+            style={styles.promotions}
+            onPress={() => console.log("Promotion open")}
+          >
+            <Promo />
+          </TouchableOpacity>
+
+          {/* <Text
+            style={{
+              fontSize: 19,
+              fontWeight: "bold",
+              marginTop: 30,
+              marginLeft: 30,
+            }}
+          >
+            Event calendar
+          </Text> */}
+
+          <View style={styles.eventcalendar}>
+          <View style={{ flexDirection: "row" }}>
+          <Text style={styles.calendarText}>Event Calendar</Text>
+          <TouchableOpacity style={styles.iconButton}>
+            <Link href="../CreateEvents">
+              <Icon name="add-circle" size={30} color="#FFFFFF" />
+            </Link>
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+          <Events />
+        </ScrollView>
+          </View>
+        </View>
       </ScrollView>
 
 
@@ -80,63 +153,18 @@ const styles = StyleSheet.create({
     color:'black',
     fontWeight: 'bold',
   },
-  box: {
-    width: 358,
-    height: 200,
-    backgroundColor: '#2E77E5',
-    marginTop: -80, // Adjust this value as needed
-    alignSelf: 'center', // Centers the box horizontally
-    marginLeft: 2, 
-    borderRadius: 25,
-    bottom: -100,
-  },
-  locationBox: {
-    width: 278,
-    height: 45,
-    backgroundColor: 'white',
-    marginTop: -80, // Adjust this value as needed
-    alignSelf: 'center', // Centers the box horizontally
-    marginLeft: 150, 
-    borderRadius: 25,
-    bottom: -100,
-  },
-  iconBox: {
-    width: 180,
-    height: 45,
-    backgroundColor: 'white',
-    marginTop: -80, // Adjust this value as needed
-    alignSelf: 'center', // Centers the box horizontally
-    marginLeft: -350, 
-    borderRadius: 25,
-    bottom: -135,
-  },
-  promotionsText:{
-    fontSize: 18,
-    marginLeft: 30,
-    marginTop: -5,
-    bottom: -155,
-    color:'black',
-    fontWeight: 'bold',
-  },
-  profilePhoto: {
-    width: 65,
-    height: 65,
-    borderRadius: 50,
-    marginTop: -80,
-    alignSelf: 'center',
-    bottom: -45,
-    marginLeft: 240
-  },
-  promotionsImage: {
-    width: 220,
-    height: 220,
-    borderRadius: 10,
-    marginTop: 120,
-    alignSelf: 'center',
-    bottom: -45,
+  separator: {
+    marginVertical: 30,
+    height: 1 ,
+    width: '80%',
     
   },
-  eventsText:{
+  promotions: {
+    justifyContent: "center",
+  },
+  eventcalendar: {
+  },
+  calendarText: {
     fontSize: 18,
     marginLeft: 30,
     bottom: -65,
