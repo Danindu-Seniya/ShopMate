@@ -15,7 +15,7 @@ export default function TabTwoScreen() {
           <View style={{
             flexDirection: 'row',
             marginTop: 10,
-            
+            backgroundColor: "#EEF0FA",
             
           }}>
             <View>
@@ -25,6 +25,7 @@ export default function TabTwoScreen() {
                   fontWeight: "bold",
                   marginLeft: 30,
                   marginTop: 5,
+                  backgroundColor: "#EEF0FA",
                   
                 }}
               >
@@ -38,7 +39,7 @@ export default function TabTwoScreen() {
                   bottom: -30,
                   marginLeft: -112,
                   marginTop: 5,
-                  
+                  backgroundColor: "#EEF0FA",
                 }}
               >
                 What you looking for?
@@ -50,7 +51,7 @@ export default function TabTwoScreen() {
                 width: 50,
                 marginLeft: 100,
                 bottom: -6,
-                
+                backgroundColor: "#EEF0FA",
               }}
                 source={require("@/assets/images/Profile_photo.png")} />
             </View>
@@ -103,7 +104,6 @@ export default function TabTwoScreen() {
                   flexDirection: "row",
                   height: 130,
                   width: 310,
-                  
                   backgroundColor: "white",
                 }}
                 onPress={() => console.log("Event1 open")}
@@ -261,6 +261,7 @@ export default function TabTwoScreen() {
                       marginBottom: 5,
                       borderRadius: 10,
                       marginLeft: 10,
+                      
                     }}
                     source={require("@/assets/images/sa 1.png")}
                   />
@@ -321,20 +322,20 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    
   },
   separator: {
     marginVertical: 30,
     height: 1 ,
     width: '80%',
     
+    
   },
   promotions: {
     justifyContent: "center",
-    
     backgroundColor: "#EEF0FA",
   },
   eventcalendar: {
-    
     backgroundColor: "#EEF0FA",
   },
   

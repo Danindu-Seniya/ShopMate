@@ -32,7 +32,7 @@ export default function TabThreeScreen() {
       
       <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#EEF0FA" }}>
         <Image
-          style={{ width: 85, height: 85, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 20, marginLeft: 248,bottom: -5 }}
+          style={{ width: 85, height: 85, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 20, marginLeft: 248,bottom: -5, }}
           source={require("../../assets/images/maleAvatar.jpg")}   
         />
         

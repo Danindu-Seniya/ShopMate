@@ -12,7 +12,7 @@ export default function ReviewCard({props}:{props:{
 
     const {img, name, text, date} = props;
     return(
-        <View style={{ backgroundColor: 'transparent', width: '90%', height: 'auto', alignSelf: "center", rowGap:5, marginVertical:5 }}>
+        <View style={{ backgroundColor: 'transparent', width: '90%', height: 'auto', alignSelf: "center", rowGap:5, marginVertical:5, }}>
         <Text style={{fontSize:20}} >{date}</Text>
         <View style={{backgroundColor: 'white', borderRadius: 25, width: '100%', height: 'auto', paddingVertical:25, paddingHorizontal: 30, alignSelf: "center", justifyContent: "center", alignItems:"center", flexDirection: "row", columnGap: 15,}}>
             {/* image */}

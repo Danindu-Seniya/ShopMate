@@ -16,7 +16,6 @@ const SearchableShopList = () => {
     { id: 6, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
     { id: 7, name: 'Shop 1', logo: require("../assets/images/Kickspot.jpeg"), rating: '4.5', category: 'Clothing' },
     { id: 8, name: 'Shop 2', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Electronics' },
-    
   ];
 
   // Filter shops based on search text
@@ -25,15 +24,17 @@ const SearchableShopList = () => {
   );
 
   return (
-    <View className='flex-1 paddingTop-20'>
-        <View className='flex-row alignItems-center height-40 borderColor-gray-300 border-2 rounded-lg px-1 py-2 width-50% alignSelf-center' >
-    <Ionicons className='margin-10 flex-row' name="search" size={24} color="gray" marginLeft= {20}/>
-      <TextInput
-        className='flex-1 height-100% width-70% fontSize-16 marginLeft= {80}'
-        placeholder="Search shops..."
-        onChangeText={text => setSearchText(text)}
-        value={searchText}
-      />
+    <View className='flex-1 paddingTop-20' style={{ backgroundColor: '#E5E7F4' }}>
+      {/* Existing content */}
+      <View style={styles.searchContainer}>
+        <Ionicons style={styles.searchIcon} name="search" size={24} color="gray" />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search shops..."
+          onChangeText={text => setSearchText(text)}
+          value={searchText}
+          placeholderTextColor="gray"
+        />
       </View>
       
       <FlatList
@@ -50,11 +51,30 @@ const SearchableShopList = () => {
         keyExtractor={item => item.id.toString()}
       />
     </View>
-    
   );
 };
 
+const styles = StyleSheet.create({
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 40,
+    backgroundColor: 'white',
+    borderRadius: 15,
+    paddingLeft: 10,
+    marginBottom: 10,
+    width: '90%',
+    marginLeft: 20, 
+    marginTop: 10
+  },
+  searchIcon: {
+    marginRight: 10,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: 'black',
+  },
+});
 
 export default SearchableShopList;
-
-
