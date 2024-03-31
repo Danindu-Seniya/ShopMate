@@ -32,14 +32,13 @@ const Promotions = () => {
   }, []);
 
   return (
-    <ScrollView>
-      {eventList.map((events) => (
-        <PromoCard 
-        key={events.id}
-        id={events.id}
-        logo={events.image} />
-      ))}
-    </ScrollView>
+    <View style={{flexDirection:'row'}}>
+      <ScrollView horizontal={true}>
+        {eventList.map((events) => (
+          <PromoCard key={events.id} id={events.id} logo={events.image} />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
