@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import Events from '../Events';
 
 const TabTwoScreen: React.FC = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.box}></View>
       <Text style={styles.text}>Hello Jane!</Text>
       <Text style={styles.text1}>What are you looking for?</Text>
@@ -29,12 +30,14 @@ const TabTwoScreen: React.FC = () => {
 
       {/* Event Calendar */}
       
-      <Text style={styles.eventsText}>Upcoming Events</Text>
+      {/* <Text style={styles.eventsText}>Upcoming Events</Text>
       <Text style={styles.date}>Today</Text>
       <View style={styles.eventBox1}></View>
-      <View style={styles.eventBox2}></View>
+      <View style={styles.eventBox2}></View> */}
+
+      <Events />
       
-      </View>
+      </ScrollView>
 
 
 
