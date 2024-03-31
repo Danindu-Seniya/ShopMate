@@ -16,6 +16,7 @@ const SearchableShopList = () => {
     { id: 6, name: 'Baskin Robbins', logo: require("../assets/images/BR.jpg"), rating: '5.0', category: 'Food' },
     { id: 7, name: 'Burger King', logo: require("../assets/images/BK.png"), rating: '4.5', category: 'Food' },
     { id: 8, name: 'Maxx lite', logo: require("../assets/images/ice-cream.png"), rating: '5.0', category: 'Cinema' },
+    
   ];
 
   // Filter shops based on search text
