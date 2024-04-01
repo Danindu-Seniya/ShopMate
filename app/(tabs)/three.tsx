@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, Pressable, ScrollView, Modal, TextInput } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { Image } from "react-native";
-import ReviewCard from "@/components/ReviewCard";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { collection, getDocs } from "firebase/firestore";
 import { FIREBASE_DB } from "@/Firebaseconfig";
+
 
 export default function TabThreeScreen() {
 
@@ -52,12 +55,15 @@ export default function TabThreeScreen() {
     //  Main cotainer
     
     <ScrollView style={{ flex: 1}} contentContainerStyle={{ alignItems: "center", justifyContent: "flex-end",  }}>
+      
       {/* Sub container */}
-      <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#AEAEAE" }}>
+      
+      <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#EEF0FA" }}>
         <Image
-          style={{ width: 200, height: 200, marginStart: 100, borderRadius: 100, marginTop: -100, zIndex: 20 }}
-          source={require("../../assets/images/maleAvatar.jpg")}   
+          style={{ width: 85, height: 85, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 1, marginLeft: 248,bottom: -5, }}
+          source={require("../../assets/images/Profile_photo.png")}   
         />
+        
 
         {/* Top Icons set */}
         <View style={{ flex: 0.1, flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 20, marginTop: -90, zIndex: 10, backgroundColor: "transparent" }}>
@@ -65,16 +71,14 @@ export default function TabThreeScreen() {
             style={{ width: 45, height: 45 }}
             source={require("../../assets/images/storeIcon.svg")}
           />
-          <Image
-            style={{ width: 45, height: 45 }}
-            source={require("../../assets/images/emergency-bell.png")}
-          />
+          
         </View>
+        <View style={{ flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center',width: 358, height: 200, bottom: 100, marginLeft: 2, borderRadius: 25, backgroundColor: "#2E77E5"}}></View>
 
         {/* Text */}
         <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "left", }}>{fName} {lName}</Text>
-
+          <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
+          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "left", }}>Name: {fName}</Text>
           <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
             <Text style={{ fontSize: 20 }}>Age: {age}</Text>
             {/* <Text style={{ fontSize: 20 }}>{age}</Text> */}
@@ -82,6 +86,7 @@ export default function TabThreeScreen() {
           <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
             <Text style={{ fontSize: 20 }}>Email: </Text>
             <Text style={{ fontSize: 20 }}>{email}</Text>
+
           </View>
         </View>
 
@@ -92,6 +97,7 @@ export default function TabThreeScreen() {
             onPress={()=>setIsReviews(true)}
             style={[styles.button, isReviews ? styles.selectedButton : null]}
           >
+            <FontAwesome name="thumbs-up" size={24} color="black" />
             <Text style={[styles.buttonText, isReviews ? styles.selectedButtonText : null]}>Reviews</Text>
           </Pressable>
 
@@ -99,13 +105,14 @@ export default function TabThreeScreen() {
             onPress={()=>setIsReviews(false)}
             style={[styles.button, !isReviews ? styles.selectedButton : null]}
           >
+            <AntDesign name="edit" size={24} color="black" />
             <Text style={[styles.buttonText, !isReviews ? styles.selectedButtonText : null]}>Bio</Text>
           </Pressable>
         </View>
 
         {/* Reviews View */}
         {isReviews ?
-          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical: 30, }}>
+          (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical: 30, bottom: 380, }}>
 
             <ReviewCard props={{ name: "Chillz", text: "Very Tasty and Good customer Service with great offers.", date: "Today", img: img1 }} />
 
@@ -114,18 +121,18 @@ export default function TabThreeScreen() {
 
           </ScrollView>)
           :
-          (<View style={{backgroundColor:"rgba(251, 251, 251, 0.30)", width:"90%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40}}>
+          (<View style={{backgroundColor:"white", width:"85%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40, bottom: 350,}}>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Name</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Gehan</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Jane</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Age</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 31</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 25</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Gender</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Male</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Female</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Special health conditions</Text>
@@ -166,10 +173,7 @@ export default function TabThreeScreen() {
                 source={require("../../assets/images/maleAvatar.jpg")}   
               />
               <TouchableOpacity style={styles.editProfileButton}>
-                <Image
-                  style={styles.editProfileIcon}
-                  source={require("../../assets/images/plus-icon.png")} // Plus icon image
-                />
+              <MaterialCommunityIcons name="pencil-circle" size={24} color="black" />
                 <Text style={styles.editProfileText}>Edit Profile Photo</Text>
               </TouchableOpacity>
             </View>
@@ -200,10 +204,10 @@ const styles = StyleSheet.create({
 
 
   age: {
-    fontSize: 20,
+    fontSize: 18,
   },
   gender: {
-    fontSize: 20,
+    fontSize: 18,
   },
   separator: {
     marginVertical: 30,
@@ -212,26 +216,30 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#fff",
-    width: '35%',
+    width: 100,
+    height: 100,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    borderRadius: 20,
+    borderRadius: 12,
     flex: 0.75,
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 5, // Added margin for spacing between buttons
+    bottom: 350
   },
   selectedButton: {
-    backgroundColor: "#000",
+    backgroundColor: "#739EDE",
   },
   buttonText: {
     fontSize: 15,
+    bottom: -8, 
+    fontWeight: 'bold'
   },
   selectedButtonText: {
     color: "#fff",
   },
   editButton: {
-    backgroundColor: "#252525", 
+    backgroundColor: "#2E77E5", 
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
@@ -243,23 +251,25 @@ const styles = StyleSheet.create({
   },
   editButtonText: {
     fontSize: 18,
-    color: "#fff", 
+    color: "#fff",
+
   },
 
   editBioModal: {
     alignSelf: 'center',
     justifyContent: 'center',
     paddingBottom: 20,
+    
   },
   editBioModalContainer: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingBottom: 100,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    
   },
   editBioModalContent: {
-    backgroundColor: '#fff',
+    backgroundColor: "#EEF0FA",
     borderRadius: 10,
     padding: 20,
     width: '80%',
@@ -271,34 +281,35 @@ const styles = StyleSheet.create({
   },
   inputField: {
     width: '90%',
-    borderWidth: 1,
-    borderColor: '#ccc',
+   backgroundColor: 'white',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
     alignSelf: 'center',
   },
   saveButton: {
-    backgroundColor: '#252525',
+    backgroundColor: '#2E77E5',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: 'center',
     alignSelf: 'center',
     width: 125,
   },
   saveButtonText: {
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
   },
   profilePictureContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    backgroundColor: "#EEF0FA",
+    
   },
   profilePicture: {
     width: 120,
     height: 120,
-    borderRadius: 50,
+    borderRadius: 60,
   },
   editProfileButton: {
     marginLeft: -38,
@@ -308,6 +319,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   editProfileIcon: {
     width: 30,

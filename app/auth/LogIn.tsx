@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import { FIREBASE_AUTH } from "@/Firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
+
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,83 +41,49 @@ const LogIn = () => {
       setLoading(false);
     }
   };
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, { backgroundColor: "#E5E7F4" }]}>
       <View
         style={{
           flexDirection: "row",
         }}
       >
-        <View
-          style={{
-            flex: 1,
-          }}
-        >
-          <TouchableOpacity>
-            <MaterialIcons
-              name="arrow-back-ios"
-              size={24}
-              color="black"
-              top={10}
-              left={3}
-              onPress={() => {
-                router.push("/Start");
-              }}
-            />
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/Start");
+            }}
+          >
+            <MaterialIcons name="arrow-back-ios" size={24} color="black" top={10} left={3} marginLeft={20} />
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            flex: 1.5,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 24,
-              alignItems: "flex-start",
-            }}
-          >
-            Log In
-          </Text>
+        <View style={{ flex: 1.5 }}>
+          <Text style={{ fontSize: 24, alignItems: "flex-start", fontWeight: "bold" }}>Log In</Text>
         </View>
       </View>
 
       <View>
-        <Text
-          style={{
-            fontSize: 32,
-            marginTop: 20,
-            marginLeft: 20,
-          }}
-        >
+        <Text style={{ fontSize: 32, marginTop: 20, marginLeft: 20, fontWeight: "bold" }}>
           Welcome Back!
         </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            marginLeft: 20,
-            marginTop: -6,
-          }}
-        >
+        <Text style={{ fontSize: 16, marginLeft: 20, marginTop: -6 }}>
           Sign in to your account
         </Text>
       </View>
 
       <View>
-        <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 20,
-          }}
-        >
+        <View style={{ marginHorizontal: 20, marginTop: 20 }}>
           <Text>Email:</Text>
           <TextInput
             style={{
-              borderWidth: 2,
-              borderColor: "black",
+              backgroundColor: "white",
               borderRadius: 10,
               height: 40,
+              marginLeft: 5,
+              marginRight: 5,
+              paddingHorizontal: 10,
             }}
             placeholder="Email"
             keyboardType="email-address"
@@ -125,19 +92,16 @@ const LogIn = () => {
             autoCorrect={false}
           />
         </View>
-        <View
-          style={{
-            marginHorizontal: 20,
-            marginTop: 10,
-          }}
-        >
+        <View style={{ marginHorizontal: 20, marginTop: 10 }}>
           <Text>Password:</Text>
           <TextInput
             style={{
-              borderWidth: 2,
-              borderColor: "black",
+              backgroundColor: "white",
               borderRadius: 10,
               height: 40,
+              marginLeft: 5,
+              marginRight: 5,
+              paddingHorizontal: 10,
             }}
             placeholder="Password"
             secureTextEntry={true}
@@ -150,25 +114,19 @@ const LogIn = () => {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1164C42",
           height: 45,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 300,
+          marginTop:500,
           marginHorizontal: 40,
           borderRadius: 10,
+          bottom: 130
+          
         }}
         onPress={signIn}
       >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 18,
-            fontWeight: "400",
-          }}
-        >
-          LOG IN
-        </Text>
+        <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>Log in</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -179,15 +137,17 @@ const LogIn = () => {
           marginTop: -1,
           marginHorizontal: 40,
           borderRadius: 10,
+          
         }}
-        onPress={() => console.log("Foget Password")}
+        onPress={() => router.push("/auth/RegisterUser")}
       >
         <Text
           style={{
             fontSize: 16,
+            bottom: 130
           }}
         >
-          {"Foget Password"}
+          {"Create Account"}
         </Text>
       </TouchableOpacity>
     </ScrollView>

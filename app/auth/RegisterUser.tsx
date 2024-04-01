@@ -26,7 +26,6 @@ export default function RegisterUser() {
   // const [gender,setGender] = useState("");
   const auth = FIREBASE_AUTH;
   const router = useRouter();
-  
 
   const signUp = async () => {
     setLoading(true);
@@ -53,17 +52,13 @@ export default function RegisterUser() {
     } catch (error: any) {
       console.log(error);
       alert("SignIn failed: " + error.message);
-    } 
-    try{
-
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, { backgroundColor: "#E5E7F4" }]}>
       <View
         style={{
           flexDirection: "row",
@@ -81,6 +76,7 @@ export default function RegisterUser() {
               color="black"
               top={10}
               left={3}
+              marginLeft={20}
               onPress={() => {
                 router.push("/Start");
               }}
@@ -97,6 +93,8 @@ export default function RegisterUser() {
             style={{
               fontSize: 24,
               alignItems: "flex-start",
+              fontWeight: "bold",
+              bottom: -5,
             }}
           >
             Sign Up
@@ -105,7 +103,7 @@ export default function RegisterUser() {
       </View>
 
       <View>
-        <Text style={{ fontSize: 32, marginTop: 20, marginLeft: 20 }}>
+        <Text style={{ fontSize: 32, marginTop: 20, marginLeft: 20, fontWeight: "bold" }}>
           Welcome!
         </Text>
         <Text style={{ fontSize: 16, marginLeft: 20, marginTop: -6 }}>
@@ -131,6 +129,18 @@ export default function RegisterUser() {
             style={styles.textInput}
             placeholder=" "
             onChangeText={(text) => setLname(text)}
+            autoCapitalize="none"
+            autoCorrect={false}
+          ></TextInput>
+        </View>
+
+        <View style={styles.inputcontainer}>
+          <Text>Age:</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder=" "
+            onChangeText={(text) => setAge(text)}
+
             autoCapitalize="none"
             autoCorrect={false}
           ></TextInput>
@@ -178,13 +188,14 @@ export default function RegisterUser() {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1164C4",
           height: 45,
           justifyContent: "center",
           alignItems: "center",
           marginTop: 80,
           marginHorizontal: 40,
           borderRadius: 10,
+          bottom: 25,
         }}
         onPress={signUp}
       >
@@ -192,14 +203,15 @@ export default function RegisterUser() {
           style={{
             color: "white",
             fontSize: 18,
-            fontWeight: "400",
+            fontWeight: "bold",
+            
           }}
         >
           Sign Up
         </Text>
       </TouchableOpacity>
 
-      <Text style={{ textAlign: "center", marginTop: 20, fontSize: 16 }}>
+      <Text style={{ textAlign: "center", marginTop: 20, fontSize: 16, bottom: 35, }}>
         Already have an account?
       </Text>
 
@@ -218,6 +230,8 @@ export default function RegisterUser() {
           style={{
             fontSize: 18,
             color: "#1164C4",
+            fontWeight: 'bold',
+            bottom: 35,
           }}
         >
           {"Log in"}
@@ -231,16 +245,20 @@ const styles = StyleSheet.create({
   container: {
     marginTop: StatusBar.currentHeight,
     flex: 1,
+    
+    
   },
   textInput: {
-    borderWidth: 2,
-    borderColor: "black",
+    backgroundColor: "white",
     borderRadius: 10,
-    height: 40,
+    height: 42,
+    marginLeft: 5,
+    marginRight: 5,
+    paddingHorizontal:10,
   },
   inputcontainer: {
     marginHorizontal: 20,
-    marginTop: 10,
+    marginTop: 5,
   },
 });
 

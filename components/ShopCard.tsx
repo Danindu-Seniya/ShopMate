@@ -22,7 +22,7 @@ const ShopCard = ({ name, logo, rating, category }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#000',
+    backgroundColor: 'white',
     borderRadius: 25,
     width: '90%',
     alignSelf: 'center',
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     marginBottom: 5,
     marginLeft: 5,
@@ -55,15 +55,15 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 15,
-    color: 'white',
+    color: 'black',
     fontWeight: '100',
   },
   ratingStars: {
     marginLeft: 5,
-    color: 'white',
+    color: 'black',
   },
   category: {
-    color: 'white',
+    color: 'black',
     fontSize: 12,
     marginLeft: 5,
   },

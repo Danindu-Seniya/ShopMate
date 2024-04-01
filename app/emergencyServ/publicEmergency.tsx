@@ -42,13 +42,12 @@ export default function PublicEmergencyScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#EEF0FA",
     padding: 20,
   },
   contactContainer: {
     marginBottom: 20,
-    borderWidth: 1,
-    borderColor: "#ccc",
+    backgroundColor: 'white',
     borderRadius: 10,
     padding: 15,
   },
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
   },
   contactNumber: {
     fontSize: 16,
-    color: "#888",
+    color: "#5B95D7",
+    fontWeight: "bold",
   },
 });

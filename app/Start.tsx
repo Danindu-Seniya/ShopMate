@@ -14,34 +14,12 @@ import {
 export default function Start() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ flexDirection: "row" }}>
-        <View style={styles.Shopmate}>
-          <Text
-            style={{
-              fontSize: 64,
-              fontWeight: "500",
-              flexDirection: "column",
-              textAlign: "right",
-              color: "white",
-            }}
-          >
-            Shop
-          </Text>
-        </View>
+      <Image
+        source={require('../assets/images/SM7.png')}
 
-        <View style={styles.Shopmate}>
-          <Text
-            style={{
-              fontSize: 64,
-              color: "black",
-              fontWeight: "500",
-              flexDirection: "column",
-              textAlign: "left",
-            }}
-          >
-            Mate
-          </Text>
-        </View>
+        style={styles.imagelogo}
+      />
+      <View style={{ flexDirection: "row" }}>
       </View>
 
       <Image
@@ -49,19 +27,19 @@ export default function Start() {
         source={require("../assets/images/home.png")}
       />
 
-      <Text style={styles.midtext}>"Shop. Explore. Enjoy."</Text>
+      <Text style={styles.midtext}>Your personal shopping companion.</Text>
 
       <TouchableOpacity
         style={styles.createbtn}
         onPress={()=>router.replace("./auth/RegisterUser")}
       >
         <Text
-          style={{color: "white",fontSize: 18,fontWeight: "bold",}}>
+          style={{color: "black",fontSize: 18,fontWeight: "bold",}}>
           Create account
         </Text>
       </TouchableOpacity>
 
-      <Text style={{ textAlign: "center", marginTop: 20, fontSize: 16 }}>
+      <Text style={{ textAlign: "center", fontSize: 16,fontWeight: "bold", bottom: 50}}>
         Already have an account?
       </Text>
 
@@ -70,7 +48,7 @@ export default function Start() {
         onPress={() => router.replace("./auth/LogIn")}
       >
         <Text
-          style={{fontSize: 18,color: "#1164C4",fontWeight: "bold",}}>
+          style={{fontSize: 18,color: "white",fontWeight: "bold",bottom: 50}}>
           Log In
         </Text>
       </TouchableOpacity>
@@ -80,8 +58,9 @@ export default function Start() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#BCBCBC",
+    backgroundColor: "#2F7DF1",
     flex: 1,
+    justifyContent: "center",
   },
   Shopmate: {
     flex: 1,
@@ -90,10 +69,13 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   image: {
-    width: 338,
-    height: 326,
+    width: 318,
+    height: 306,
     marginTop: -25,
     marginHorizontal: 10,
+    marginLeft: 20,
+    bottom: 60,
+    alignSelf: "center",
   },
   midtext: {
     justifyContent: "center",
@@ -102,15 +84,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 20,
     fontWeight: "bold",
+    bottom: 50,
+    color:'white'
   },
   createbtn: {
-    backgroundColor: "black",
+    backgroundColor: "white",
     height: 45,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 90,
     marginHorizontal: 40,
     borderRadius: 10,
+    bottom:90,
   },
   loginbtn:{
     height: 45,
@@ -119,6 +104,14 @@ const styles = StyleSheet.create({
     marginTop: -15,
     marginHorizontal: 40,
     borderRadius: 10,
-  }
+    color:'white'
+  },
+  imagelogo: {
+    width: 338,
+    height: 326,
+    marginTop: -25,
+    marginHorizontal: 10,
+    alignSelf:'center',
+  },
 });
 

@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, Image, } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Router, router } from 'expo-router';
+import { FontAwesome6 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const Emergency = () => {
@@ -20,33 +23,33 @@ const Emergency = () => {
   return (
     <View>
       <SafeAreaView>
-        <ImageBackground source={require('../../assets/images/EmergencyTabBG.png')} style={{ width: '100%', height: '100%' }}>
-          <View style={styles.container}>
-            <Text style={styles.heading}>Emergency Services</Text>
+      <Image source={require('../../assets/images/emergency-bell.png')} style={styles.imageStyle} />
+      <Text style={styles.heading}>Emergency{"\n"}Services</Text>
 
+          <View style={styles.container}>
             {/* Button for Request Medical Assistance */}
-            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+            <TouchableOpacity style={styles.button1} onPress={()=>router.push("/emergencyServ/reqMedical")}>
               
               
-              <Image source={require('../../assets/images/medicalIcon.webp')} style={styles.icon} />
-              <Text style={styles.buttonText}>Request Medical Assistance</Text>
+            <FontAwesome6 name="square-plus" size={30} color="black" bottom={20} marginLeft= {40} /> 
+              <Text style={styles.buttonText1}>Medical{"\n"}Services</Text>
             </TouchableOpacity>
 
             {/* Button for Request Security Assistance */}
-            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqSecurity")}>
+            <TouchableOpacity style={styles.button2} onPress={()=>router.push("/emergencyServ/reqSecurity")}>
               
-              <Image source={require('../../assets/images/securityIcon.png')} style={styles.icon} />
-              <Text style={styles.buttonText}>Request Security Assistance</Text>
+            <MaterialIcons name="security" size={30} color="black" bottom={20} marginLeft= {40}/>
+              <Text style={styles.buttonText2}>Security{"\n"}Services</Text>
             </TouchableOpacity>
 
             {/* Button for Public Emergency Services */}
-            <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/publicEmergency")}>
+            <TouchableOpacity style={styles.button3} onPress={()=>router.push("/emergencyServ/publicEmergency")}>
               
-              <Image source={require('../../assets/images/publicEM.png')} style={styles.icon} />
-              <Text style={styles.buttonText}>Public Emergency Services</Text>
+            <MaterialCommunityIcons name="bell-ring-outline" size={30} color="black" marginLeft= {55}/>
+              <Text style={styles.buttonText3}>Public Emergency{"\n"}Services</Text>
             </TouchableOpacity>
           </View>
-        </ImageBackground>
+        
       </SafeAreaView>
     </View>
   );
@@ -57,30 +60,84 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#EEF0FA'
   },
   heading: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 20,
+    
     color: 'black',
+    bottom: -130,
+    textAlign: 'center',
   },
-  button: {
+  button1: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#252525',
     borderRadius: 10,
     padding: 10,
     marginBottom: 10,
+    height: 135,
+    width: 135,
+    bottom: -370,
+    marginLeft: -160,
+    backgroundColor:'white'
   },
-  buttonText: {
+  button2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor:'white',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
+    height: 135,
+    width: 135,
+    marginLeft: 160,
+    bottom: -225,
+  },
+  button3: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor:'white',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
+    height: 120,
+    width: 300,
+    bottom: -230,
+    
+  },
+  buttonText1: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: 'white',
-    marginLeft: 10,
+    color: 'black',
+    marginLeft: -40,
+    bottom: -15,
+    textAlign: 'center',
+  },
+  buttonText2: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    marginLeft: -40,
+    bottom: -15,
+    textAlign: 'center',
+  },
+  buttonText3: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    marginLeft: 20,
   },
   icon: {
     width: 30,
     height: 30,
+  },
+
+  imageStyle: {
+    width: 121,
+    height: 121,
+    alignSelf: 'center',
+    bottom: -120,
   },
 });
 

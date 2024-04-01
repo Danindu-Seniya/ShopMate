@@ -5,14 +5,16 @@ import { Text, View } from "@/components/Themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Link, router } from "expo-router";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function TabOneScreen() {
   return (
      <View style={styles.container}>
-      <SimpleLineIcons name="location-pin" size={150} color="#727272" />
+      <FontAwesome5 name="map-marker-alt" size={160} color="black" />
       <Text style={styles.title}>Navigate Easily</Text>
       <Text style={styles.sentence}>
-        Find your destination easy and fast with Augmented Reality
+        Find your destination easy and fast{"\n"}
+        with Augmented Reality
       </Text>
 
       <View style={styles.buttonWrapper}>
@@ -38,14 +40,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 10,
+    
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
     paddingTop: 10,
+    color: "#2E77E5",
   },
   sentence: {
-    fontSize: 14,
+    fontSize: 16,
+    textAlign: 'center'
   },
   separator: {
     marginVertical: 30,
@@ -59,12 +64,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 100,
     borderRadius: 8,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#2E77E5",
     fontSize: 16,
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
+    
   },
   buttonText: {
     fontSize: 16,
