@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, Pressable, ScrollView, Modal, TextInput } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { Image } from "react-native";
-import ReviewCard from "@/components/ReviewCard";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { collection, getDocs } from "firebase/firestore";
+import { FIREBASE_DB } from "@/Firebaseconfig";
+
 
 export default function TabThreeScreen() {
 
@@ -23,6 +25,32 @@ export default function TabThreeScreen() {
     // Implement logic to save edited bio
     setIsEditBioModalVisible(false);
   };
+
+  //user details update 
+
+  const [fName, setFName] = useState("");
+  const[lName, setLName] = useState("");
+  const[age, setAge] = useState("");
+  const[email,setEmail] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const Snapshot = await getDocs(collection(FIREBASE_DB, "users"));
+        Snapshot.forEach((doc) => {
+          // Set details from Firestore data
+          setFName(doc.data().first);
+          setLName(doc.data().last);
+          setAge(doc.data().age);
+          setEmail(doc.data().email);
+        });
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     //  Main cotainer
     
@@ -49,11 +77,16 @@ export default function TabThreeScreen() {
 
         {/* Text */}
         <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", bottom: 330, color: 'white' }}>Jane Fernando</Text>
-
           <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
-            <Text style={{ fontSize: 20, color: 'white' }}>Age:</Text>
-            <Text style={{ fontSize: 20, color: 'white' }}>25</Text>
+          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "left", }}>Name: {fName}</Text>
+          <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
+            <Text style={{ fontSize: 20 }}>Age: {age}</Text>
+            {/* <Text style={{ fontSize: 20 }}>{age}</Text> */}
+          </View>
+          <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
+            <Text style={{ fontSize: 20 }}>Email: </Text>
+            <Text style={{ fontSize: 20 }}>{email}</Text>
+
           </View>
         </View>
 

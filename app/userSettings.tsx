@@ -4,10 +4,10 @@ import { router } from "expo-router";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { FIREBASE_AUTH } from "@/Firebaseconfig";
+
 
 export default function UserSettingsScreen() {
- 
-
   const handleLogout = () => {
     // Implement logic for logging out the user
     // For example, clearing authentication tokens, resetting state, etc.
@@ -15,12 +15,22 @@ export default function UserSettingsScreen() {
 
   return (
     <View style={styles.container}>
+
     <View style={styles.buttonContainer}>
       <TouchableOpacity onPress={()=>router.push("../Settings/pwAndSecurity")}>
         <View style={styles.buttonContent}>
           <MaterialIcons name="security" size={24} color="black" style={styles.icon} />
           <Text style={styles.buttonText}>Password and Security</Text>
         </View>
+
+      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+        <Text style={styles.buttonText}>Help</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
+        <Text style={styles.buttonText}>About</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.logoutButton} onPress={() => FIREBASE_AUTH.signOut()} className='Sign Out'>
+        <Text style={styles.logoutButtonText}>Log Out</Text>
       </TouchableOpacity>
       </View>
 

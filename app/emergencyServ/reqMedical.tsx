@@ -9,6 +9,8 @@ import {MaterialIcons} from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons';
 import {Camera} from "expo-camera"; 
 
+
+
 export default function reqMedical() {
 
   const cameraRef = useRef(null);

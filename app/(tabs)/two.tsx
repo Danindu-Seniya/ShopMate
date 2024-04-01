@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -64,7 +65,7 @@ const TabTwoScreen: React.FC = () => (
     <Text style={styles.eventsText}>
       Event Calender
     </Text>
-
+ <ScrollView>
     <Events />
   </ScrollView>
 );
@@ -152,3 +153,4 @@ const styles = StyleSheet.create({
 });
 
 export default TabTwoScreen;
+

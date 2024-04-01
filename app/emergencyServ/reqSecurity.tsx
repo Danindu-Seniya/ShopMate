@@ -8,6 +8,7 @@ import {MaterialIcons} from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons'; 
 import {Camera} from "expo-camera";
 
+
 export default function reqSecurity() {
   return (
     <View style={styles.container}>
@@ -16,21 +17,15 @@ export default function reqSecurity() {
      <Text style={styles.sentence}>
        Scan the closest shop front and{"\n"}connect with the service.
      </Text>
-
-     
-
        <Text style={styles.buttonWrapperText}>
          Click camera to locate{" "}
        </Text>
-
-       
         <TouchableOpacity style={styles.button}>
           <MaterialIcons name="photo-camera" size={24} color="white" />
         </TouchableOpacity>
         </View>
-       
-     
  );
+
 }
 
 const styles = StyleSheet.create({
@@ -64,6 +59,23 @@ const styles = StyleSheet.create({
    backgroundColor: "#2E77E5",
    bottom: -60,
   },
+  sentence: {
+    fontSize: 14,
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    elevation: 3,
+    backgroundColor: "black",
+  },
   buttonText: {
     fontSize: 16,
     lineHeight: 21,
@@ -76,11 +88,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 150,
+    marginTop:100,
   },
   buttonWrapperText: {
     fontWeight: "bold",
-    paddingVertical: 10,
     bottom: -60,
   },
  });
  
+
