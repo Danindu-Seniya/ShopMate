@@ -8,7 +8,7 @@ ShopMate User Dashboard is a mobile application designed to provide shoppers wit
 ## Features
 
 - **AR Navigation:** Users can easily navigate through the mall using AR technology, making it convenient to find shops, services, and amenities.
-- **Real-Time Updates:** Users receive notifications about promotions, discounts, and upcoming events within the mall, ensuring they stay informed.
+- **Real-Time Updates:** Users receive updates about promotions, discounts, and upcoming events within the mall, ensuring they stay informed.
 - **Emergency Assistance:** In case of medical or security emergencies, users can quickly contact relevant staff or authorities for assistance.
 - **User-Friendly Interface:** The application features a user-friendly interface, making it easy for shoppers to browse and explore various features.
 
