@@ -68,6 +68,7 @@ const TabTwoScreen: React.FC = () => (
  <ScrollView>
     <Events />
   </ScrollView>
+  </ScrollView>
 );
 const styles = StyleSheet.create({
   container: {
@@ -150,7 +151,9 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "bold",
   },
+
 });
+
 
 export default TabTwoScreen;
 

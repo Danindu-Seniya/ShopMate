@@ -7,6 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { collection, getDocs } from "firebase/firestore";
 import { FIREBASE_DB } from "@/Firebaseconfig";
+import ReviewCard from "@/components/ReviewCard";
 
 
 export default function TabThreeScreen() {
@@ -195,7 +196,7 @@ export default function TabThreeScreen() {
 
 
       </View>
-
+</View>
     </ScrollView>
   );
 }

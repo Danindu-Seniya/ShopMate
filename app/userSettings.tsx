@@ -22,16 +22,9 @@ export default function UserSettingsScreen() {
           <MaterialIcons name="security" size={24} color="black" style={styles.icon} />
           <Text style={styles.buttonText}>Password and Security</Text>
         </View>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
-        <Text style={styles.buttonText}>Help</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>router.push("/emergencyServ/reqMedical")}>
-        <Text style={styles.buttonText}>About</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.logoutButton} onPress={() => FIREBASE_AUTH.signOut()} className='Sign Out'>
-        <Text style={styles.logoutButtonText}>Log Out</Text>
-      </TouchableOpacity>
+
       </View>
 
       <View style={styles.buttonContainer}>
@@ -112,5 +105,11 @@ const styles = StyleSheet.create({
   logouticon: {
     marginLeft: 10,
     color: 'white'
+  },
+  button:{
+    backgroundColor: 'blue',
+  },
+  logoutButton:{
+    backgroundColor: 'red',
   },
 });
