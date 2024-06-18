@@ -7,17 +7,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto } from '@expo/vector-icons';
 import Promo from "../Promo";
 
+
 const TabTwoScreen: React.FC = () => (
   <ScrollView style={styles.container}>
     <View style={styles.box}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <View>
-          <Text style={styles.text}>Hello jane!</Text>
+          <Text style={styles.text}>Hello </Text>
           <Text style={styles.text1}>What are you looking for?</Text>
         </View>
         {/* Profile Photo */}
         <Image
-          source={require("../../assets/images/Profile_photo.png")}
+          source={require("../../assets/images/maleAvatar.jpg")}
           style={styles.profilePhoto}
         />
       </View>
@@ -68,6 +69,7 @@ const TabTwoScreen: React.FC = () => (
  <ScrollView>
     <Events />
   </ScrollView>
+  </ScrollView>
 );
 const styles = StyleSheet.create({
   container: {
@@ -99,6 +101,7 @@ const styles = StyleSheet.create({
   },
 
   promotionsText: {
+    paddingTop: 10,
     fontSize: 18,
     marginLeft: 30,
 
@@ -123,6 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 30,
     marginTop:20,
+    marginBottom: -50,
     color: "black",
     fontWeight: "bold",
   },
@@ -150,7 +154,9 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "bold",
   },
+
 });
+
 
 export default TabTwoScreen;
 

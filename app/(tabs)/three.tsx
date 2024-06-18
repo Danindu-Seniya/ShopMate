@@ -5,8 +5,9 @@ import { Image } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, updateDoc } from "firebase/firestore";
 import { FIREBASE_DB } from "@/Firebaseconfig";
+import ReviewCard from "@/components/ReviewCard";
 
 
 export default function TabThreeScreen() {
@@ -14,15 +15,15 @@ export default function TabThreeScreen() {
   const [isReviews, setIsReviews] = useState<boolean>(true);
   const [isEditBioModalVisible, setIsEditBioModalVisible] = useState<boolean>(false);
 
-  const img1 = require("../../assets/images/ice-cream.png")
-  const img2 = require("../../assets/images/Kickspot.jpeg")
+  const img1 = require("../../assets/images/Roots.jpg")
+  const img2 = require("../../assets/images/odel.jpeg")
 
   const handleEditBio = () => {
     setIsEditBioModalVisible(true);
   };
 
   const handleSaveBio = () => {
-    // Implement logic to save edited bio
+    updateDoc
     setIsEditBioModalVisible(false);
   };
 
@@ -32,6 +33,9 @@ export default function TabThreeScreen() {
   const[lName, setLName] = useState("");
   const[age, setAge] = useState("");
   const[email,setEmail] = useState("");
+  const[gender,setGender] = useState("");
+  const[health,setHealth] = useState("");
+  const[medicine,setMedicine] = useState("");
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -43,6 +47,10 @@ export default function TabThreeScreen() {
           setLName(doc.data().last);
           setAge(doc.data().age);
           setEmail(doc.data().email);
+          setGender(doc.data().gender);
+          setHealth(doc.data().healthConditions);
+          setMedicine(doc.data().medicine);
+
         });
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -54,45 +62,36 @@ export default function TabThreeScreen() {
   return (
     //  Main cotainer
     
-    <ScrollView style={{ flex: 1}} contentContainerStyle={{ alignItems: "center", justifyContent: "flex-end",  }}>
+    <ScrollView style={{ flex: 1}} contentContainerStyle={{ alignItems: "center", justifyContent: "flex-end", width: "100%" }}>
       
       {/* Sub container */}
       
-      <View style={{ flex: 0.75, paddingTop: 130, borderTopEndRadius: 20, borderTopStartRadius: 20, width: '100%', backgroundColor: "#EEF0FA" }}>
+      <View style={{ flex: 1, paddingTop: -20, borderTopEndRadius: 20, borderTopStartRadius: 50, width: '100%', backgroundColor: "#EEF0FA" }}>
         <Image
-          style={{ width: 85, height: 85, marginStart: 80, borderRadius: 100, marginTop: -100, zIndex: 1, marginLeft: 248,bottom: -5, }}
-          source={require("../../assets/images/Profile_photo.png")}   
+          style={{ width: 85, height: 85, borderRadius: 100, zIndex: 10, marginLeft: 290,bottom: -40, }}
+          source={require("../../assets/images/maleAvatar.jpg")}   
         />
         
 
-        {/* Top Icons set */}
-        <View style={{ flex: 0.1, flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 20, marginTop: -90, zIndex: 10, backgroundColor: "transparent" }}>
-          <Image
-            style={{ width: 45, height: 45 }}
-            source={require("../../assets/images/storeIcon.svg")}
-          />
+        
           
-        </View>
-        <View style={{ flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center',width: 358, height: 200, bottom: 100, marginLeft: 2, borderRadius: 25, backgroundColor: "#2E77E5"}}></View>
+        
+        <View style={{ flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems: 'center',width: '100%' , height: 220, bottom: 110, borderRadius: 25, backgroundColor: "#2E77E5"}}></View>
 
         {/* Text */}
-        <View style={{ marginTop: 100, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "70%" }}>
-          <View style={{ flexDirection: "row", backgroundColor: "transparent", bottom: 330, }}>
-          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "left", }}>Name: {fName}</Text>
-          <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
-            <Text style={{ fontSize: 20 }}>Age: {age}</Text>
-            {/* <Text style={{ fontSize: 20 }}>{age}</Text> */}
-          </View>
-          <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: "transparent" }}>
-            <Text style={{ fontSize: 20 }}>Email: </Text>
-            <Text style={{ fontSize: 20 }}>{email}</Text>
-
+        <View style={{ marginTop: 80, flexDirection: "column", gap: 10, paddingHorizontal: 20, backgroundColor: "transparent", width: "100%" }}>
+          <View style={{ backgroundColor: "transparent", bottom: 330, }}>
+          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "left",color: "white" }}>Name: {fName} </Text>
+          
+          <View style={{ flexDirection: "row", gap: 10, backgroundColor: "transparent", }}>
+            <Text style={{ fontSize: 20, color: 'white'}}>Email: </Text>
+            <Text style={{ fontSize: 20, color: 'white'}}>{email}</Text>
           </View>
         </View>
 
         {/* button set */}
 
-        <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "90%", alignSelf: "center" }}>
+        <View style={{ marginTop: 40, flexDirection: "row", backgroundColor: "transparent", width: "100%", alignSelf: "center", alignItems: "center", }}>
           <Pressable
             onPress={()=>setIsReviews(true)}
             style={[styles.button, isReviews ? styles.selectedButton : null]}
@@ -114,33 +113,33 @@ export default function TabThreeScreen() {
         {isReviews ?
           (<ScrollView style={{ flex: 1, flexDirection: "column", rowGap: 25, marginTop: 20, paddingVertical: 30, bottom: 380, }}>
 
-            <ReviewCard props={{ name: "Chillz", text: "Very Tasty and Good customer Service with great offers.", date: "Today", img: img1 }} />
+            <ReviewCard props={{ name: "Roots", text: "Very Tasty and Good customer Service with great offers.", date: "Today", img: img1 }} />
 
-            <ReviewCard props={{ name: "KickSpot", text: "High quality shoes and they have great offers. Highly recommended.", date: "14/01/2024", img: img2 }} />
+            <ReviewCard props={{ name: "Odel", text: "High quality clothings and they have great offers. Highly recommended.", date: "14/01/2024", img: img2 }} />
 
 
           </ScrollView>)
           :
-          (<View style={{backgroundColor:"white", width:"85%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40, bottom: 350,}}>
+          (<View style={{backgroundColor:"white", width:"100%", alignSelf:"center", paddingHorizontal:20,paddingVertical:30, rowGap:10, borderRadius:10, marginTop:40, bottom: 350,}}>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Name</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Jane</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: {fName} {lName}</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Age</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: 25</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: {age}</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Gender</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Female</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: {gender}</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Special health conditions</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Asthma</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: {health}</Text>
             </View>
             <View style={{ flexDirection: "row", backgroundColor: 'transparent', }}>
               <Text style={{ flex: 1, fontSize: 18, color: "black", fontWeight: "300" }}>Emergency medicine</Text>
-              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: Theophylline</Text>
+              <Text style={{ flex: 0.8, fontSize: 18, color: "black", fontWeight: "300" }}>: {medicine}</Text>
             </View>
 
             <Pressable
@@ -179,11 +178,12 @@ export default function TabThreeScreen() {
             </View>
             
             {/* Text Inputs */}
-            <TextInput style={styles.inputField} placeholder="Name" />
-            <TextInput style={styles.inputField} placeholder="Age" />
-            <TextInput style={styles.inputField} placeholder="Gender" />
-            <TextInput style={styles.inputField} placeholder="Health Conditions" />
-            <TextInput style={styles.inputField} placeholder="Medicine" />
+            <TextInput style={styles.inputField} placeholder="First Name" onChangeText={setFName} />
+            <TextInput style={styles.inputField} placeholder="Last Name" onChangeText={setLName} />
+            <TextInput style={styles.inputField} placeholder="Age" onChangeText={setAge}/>
+            <TextInput style={styles.inputField} placeholder="Gender" onChangeText={setGender} />
+            <TextInput style={styles.inputField} placeholder="Health Conditions" onChangeText={setHealth}/>
+            <TextInput style={styles.inputField} placeholder="Medicine" onChangeText={setMedicine}/>
 
             {/* Save Button */}
             <TouchableOpacity style={styles.saveButton} onPress={handleSaveBio}>
@@ -195,7 +195,7 @@ export default function TabThreeScreen() {
 
 
       </View>
-
+</View>
     </ScrollView>
   );
 }
@@ -221,9 +221,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 12,
-    flex: 0.75,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
     marginHorizontal: 5, // Added margin for spacing between buttons
     bottom: 350
   },
